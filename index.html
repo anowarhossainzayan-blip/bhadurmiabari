@@ -20,59 +20,67 @@
       font-family: 'Hind Siliguri', sans-serif;
       color: #333;
       line-height: 1.6;
-      background-color: #f9f9f9;
+      background-color: #ffffff;
     }
 
-    /* Lock Screen Modal Overlay */
-    .auth-overlay {
+    /* Separate Full White Page Authentication Screen */
+    .auth-page {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
+      background: #ffffff; /* সম্পূর্ণ সাদা ব্যাকগ্রাউন্ড */
+      z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .auth-box {
       background: #ffffff;
-      width: 90%;
-      max-width: 420px;
-      padding: 30px 25px;
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 30px;
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
       text-align: center;
     }
 
     .auth-box h2 {
       color: #143d59;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
     }
 
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       text-align: left;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: 600;
       font-size: 0.95rem;
-      color: #444;
+      color: #4a5568;
     }
 
-    .form-group input, .form-group select {
+    .form-group input {
       width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
       font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #143d59;
     }
 
     .auth-btn {
@@ -81,7 +89,7 @@
       background-color: #143d59;
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: bold;
       font-size: 1rem;
       cursor: pointer;
@@ -95,8 +103,8 @@
 
     .toggle-link {
       display: inline-block;
-      margin-top: 15px;
-      font-size: 0.85rem;
+      margin-top: 20px;
+      font-size: 0.9rem;
       color: #1877f2;
       text-decoration: underline;
       cursor: pointer;
@@ -104,7 +112,8 @@
 
     /* Main Website Content Container */
     #main-website-content {
-      display: block; /* Managed by JS */
+      display: none; /* লগইন না করা পর্যন্ত লুকানো থাকবে */
+      background-color: #f9f9f9;
     }
 
     .container {
@@ -213,7 +222,7 @@
       color: #143d59;
     }
 
-    /* Prominent Figures / VIP Section Categorized */
+    /* Prominent Figures Section */
     .vip-category {
       margin-bottom: 35px;
     }
@@ -272,7 +281,7 @@
     .member-badge {
       background: #143d59;
       color: #fff;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 20px;
       font-weight: 500;
       display: flex;
@@ -387,10 +396,10 @@
 </head>
 <body>
 
-  <!-- Entry Lock Overlay (Login / Register Modal) -->
-  <div id="auth-overlay" class="auth-overlay">
+  <!-- Full White Page Auth Overlay -->
+  <div id="auth-page" class="auth-page">
     
-    <!-- 1. Login Box -->
+    <!-- Login Box -->
     <div id="login-box" class="auth-box">
       <h2>Login করুন</h2>
       <form onsubmit="handleLogin(event)">
@@ -407,7 +416,7 @@
       <span class="toggle-link" onclick="showRegisterForm()">no account? create account</span>
     </div>
 
-    <!-- 2. Register Box -->
+    <!-- Register Box -->
     <div id="register-box" class="auth-box" style="display: none;">
       <h2>Create Account</h2>
       <form onsubmit="handleRegister(event)">
@@ -610,17 +619,17 @@
       </div>
     </section>
 
-    <!-- Logged-in Members List Section -->
+    <!-- Registered Members List Section -->
     <section id="members-section" class="section bg-light">
       <div class="container">
         <h2 class="section-title">রেজিস্ট্রার্ড সদস্যবৃন্দ</h2>
         <div id="member-list" class="member-grid">
-          <!-- Registered Members Will Show Here -->
+          <!-- Only Registered Members Will Be Rendered Here -->
         </div>
 
         <!-- Admin Special Log Panel -->
         <div id="admin-panel" class="admin-panel">
-          <h3 style="color: #e53e3e; text-align: center;">🔒 অ্যাডমিন প্যানেল: ইউজার লগইন ও রেজিস্ট্রেশন তথ্য</h3>
+          <h3 style="color: #e53e3e; text-align: center;">🔒 অ্যাডমিন প্যানেল: ইউজার রেজিস্ট্রেশন ও লগইন তথ্য</h3>
           <table class="admin-table">
             <thead>
               <tr>
@@ -714,10 +723,11 @@
       let users = JSON.parse(localStorage.getItem('site_users_db')) || {};
 
       if (users[name]) {
-        alert('এই নামের অ্যাকাউন্ট আগে থেকেই তৈরি আছে! অন্য নাম বা লগইন করুন।');
+        alert('এই নামের অ্যাকাউন্ট আগে থেকেই তৈরি আছে! অন্য নাম ব্যবহার করুন।');
         return;
       }
 
+      // Save user details
       users[name] = {
         password: pass,
         birthdate: birthdate,
@@ -729,7 +739,6 @@
       
       alert('you are registered');
       
-      // Auto login after registration
       logUserIn(name);
     }
 
@@ -743,14 +752,14 @@
       if (users[name] && users[name].password === pass) {
         logUserIn(name);
       } else {
-        alert('নাম অথবা পাসওয়ার্ড ভুল হয়েছে!');
+        alert('নাম অথবা পাসওয়ার্ড ভুল হয়েছে! পূর্বে রেজিস্ট্রেশন না করে থাকলে "no account? create account"-এ ক্লিক করুন।');
       }
     }
 
     function logUserIn(username) {
       localStorage.setItem('logged_in_user', username);
       
-      // Record Login Time
+      // Record Login Timestamp
       let logs = JSON.parse(localStorage.getItem('login_logs')) || {};
       const now = new Date();
       logs[username] = now.toLocaleString('bn-BD', { dateStyle: 'medium', timeStyle: 'short' });
@@ -766,12 +775,16 @@
 
     function checkAuthStatus() {
       const activeUser = localStorage.getItem('logged_in_user');
-      const authOverlay = document.getElementById('auth-overlay');
+      const authPage = document.getElementById('auth-page');
+      const mainWebsiteContent = document.getElementById('main-website-content');
       const navUsername = document.getElementById('nav-username');
       const adminPanel = document.getElementById('admin-panel');
 
       if (activeUser) {
-        authOverlay.style.display = 'none';
+        // Hide login page & show main website
+        authPage.style.display = 'none';
+        mainWebsiteContent.style.display = 'block';
+
         navUsername.innerHTML = `👤 <strong>${activeUser}</strong> ${activeUser === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}`;
         
         if (activeUser === ADMIN_USER) {
@@ -781,7 +794,9 @@
           adminPanel.style.display = 'none';
         }
       } else {
-        authOverlay.style.display = 'flex';
+        // Show login page & hide main website
+        authPage.style.display = 'flex';
+        mainWebsiteContent.style.display = 'none';
         showLoginForm();
       }
 
@@ -794,7 +809,7 @@
       const userNames = Object.keys(users);
 
       if (userNames.length === 0) {
-        memberListDiv.innerHTML = '<p style="color: #777;">এখনও কোনো সদস্য অ্যাকাউন্ট তৈরি করেননি।</p>';
+        memberListDiv.innerHTML = '<p style="color: #777;">এখনও কোনো সদস্য রেজিস্ট্রেশন সম্পন্ন করেননি।</p>';
         return;
       }
 
@@ -830,7 +845,7 @@
       }).join('');
     }
 
-    // Initialize check
+    // Initialize Check on Load
     checkAuthStatus();
   </script>
 
