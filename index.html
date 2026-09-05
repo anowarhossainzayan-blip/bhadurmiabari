@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ভাদুর মিয়া বাড়ি - BHADUR MIA BARI</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section with Live Satellite Map Background */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                  url('https://static-maps.yandex.ru/1.x/?l=sat&ll=90.8512,23.1021&z=16&size=600,400');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .welcome-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #f4b41a;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #f4b41a;
+      color: #143d59;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #143d59;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #f4b41a;
+    }
+
+    /* Section Utility */
+    .section {
+      padding: 50px 0;
+    }
+
+    .bg-light {
+      background-color: #edf2f7;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #143d59;
+    }
+
+    /* Prominent Figures / VIP Section Categorized */
+    .vip-category {
+      margin-bottom: 35px;
+    }
+
+    .category-title {
+      font-size: 1.3rem;
+      color: #143d59;
+      border-bottom: 2px solid #f4b41a;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .vip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .vip-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid #143d59;
+      transition: transform 0.3s;
+    }
+
+    .vip-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .vip-name {
+      font-size: 1.15rem;
+      color: #143d59;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .vip-history {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Offline Account Box */
+    .auth-container {
+      max-width: 450px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #143d59;
+      background: #fff;
+      color: #143d59;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: #143d59;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #143d59;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .user-profile {
+      display: none;
+      text-align: center;
+    }
+
+    .admin-badge {
+      background-color: #e53e3e;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    .logout-btn {
+      margin-top: 15px;
+      background-color: #e53e3e;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Member List Styling */
+    .member-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .member-badge {
+      background: #143d59;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Admin Panel Table */
+    .admin-panel {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-top: 5px solid #e53e3e;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .admin-table th, .admin-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .admin-table th {
+      background-color: #143d59;
+      color: white;
+    }
+
+    /* Event Section Styling */
+    .single-event-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border-top: 6px solid #f4b41a;
+      padding: 35px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .event-badge-tag {
+      display: inline-block;
+      background: #e53e3e;
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .event-main-title {
+      font-size: 2rem;
+      color: #143d59;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .event-desc {
+      font-size: 1.15rem;
+      color: #555;
+    }
+
+    /* About Section */
+    .about-content {
+      text-align: center;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Group Link Section */
+    .group-section {
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    .group-desc {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .group-btn-link {
+      display: inline-block;
+      padding: 14px 32px;
+      background-color: #1877f2;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .group-btn-link:hover {
+      background-color: #0d65d9;
+      transform: translateY(-3px);
+    }
+
+    /* Map Box */
+    .address-text {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .map-box {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin-bottom: 15px;
+    }
+
+    .map-btn-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4285F4;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #143d59;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .welcome-title { font-size: 1.8rem; }
+      .subtitle { font-size: 1.1rem; }
+      .nav-links { gap: 8px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="welcome-title">WELCOME TO BHADUR MIA BARI</h1>
+      <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০</p>
+      <a href="#events-section" class="btn">ইভেন্ট ও নোটিশ দেখুন</a>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">ভাদুর মিয়া বাড়ি</div>
+      <ul class="nav-links">
+        <li><a href="#account-section">লগইন</a></li>
+        <li><a href="#vip-section">গুণীজন</a></li>
+        <li><a href="#members-section">সদস্যবৃন্দ</a></li>
+        <li><a href="#events-section">ইভেন্ট</a></li>
+        <li><a href="#about">পরিচয়</a></li>
+        <li><a href="#location">অবস্থান</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Prominent Figures / VIP History Section -->
+  <section id="vip-section" class="section">
+    <div class="container">
+      <h2 class="section-title">বাড়ির ঐতিহ্য ও গুণী ব্যক্তিবর্গ</h2>
+      
+      <!-- ১. জনপ্রতিনিধি ও সামাজিক নেতৃত্ব -->
+      <div class="vip-category">
+        <h3 class="category-title">🏛️ জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">জনাব এরশাদ হোসেন মিঞা</div>
+            <p class="vip-history">টানা ৩০ থেকে ৩৫ বছর সফলতার সাথে ইউনিয়ন পরিষদের চেয়ারম্যান হিসেবে দায়িত্ব পালন করেন।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব নাজিম উদ্দিন আহমেদ</div>
+            <p class="vip-history">বিশিষ্ট শিল্পপতি এবং দুইবারের নির্বাচিত সংসদ সদস্য (MP)।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব শাহাদাত হোসেন বাচ্চু মিঞা</div>
+            <p class="vip-history">বহু বছর ইউনিয়ন পরিষদের চেয়ারম্যান হিসেবে দায়িত্ব পালনের পাশাপাশি ভাদুর উচ্চ বিদ্যালয়ের প্রধান শিক্ষক ছিলেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ২. শিক্ষা, প্রযুক্তি ও সমাজসেবা -->
+      <div class="vip-category">
+        <h3 class="category-title">🎓 শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসেন</div>
+            <p class="vip-history">নোয়াখালীর চৌমুহনী সরকারি কলেজের অধ্যক্ষ ছিলেন। তিনি অসংখ্য শিক্ষার্থীকে বিনামূল্যে পড়ালেখার সুযোগ করে দিয়েছেন এবং নিজের বাড়িতে রেখে পড়াশোনা করিয়েছেন।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব আনোয়ার হোসেন</div>
+            <p class="vip-history">ভাদুর উচ্চ বিদ্যালয়ের শিক্ষক ও প্রখ্যাত সমাজসেবক।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">ডাক্তার আমিন উল্লাহ</div>
+            <p class="vip-history">ভাদুর সরকারি প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব জুবায়ের হোসেন</div>
+            <p class="vip-history">যুক্তরাষ্ট্রে কম্পিউটার চিপ উদ্ভাবনের সাথে যুক্ত থেকে প্রযুক্তি ক্ষেত্রে অবদান রেখেছেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ৩. ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব -->
+      <div class="vip-category">
+        <h3 class="category-title">🕌 ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">আহম্মদ উল্লাহ দরবেশ সাহেব</div>
+            <p class="vip-history">একজন প্রখ্যাত আধ্যাত্মিক সাধক ও প্রবীণ বুজুর্গ।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">আনোয়ার উল্লা মৌলভী</div>
+            <p class="vip-history">অত্যন্ত সুপরিচিত ও বরেণ্য আলেম; প্রখ্যাত ওয়ায়েজ হিসেবে তাঁর ব্যাপক সুনাম ছিল।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">হাফেজ আলতাফ হোসেন</div>
+            <p class="vip-history">একজন কোরআনে হাফেজ ও সমাজশ্রদ্ধেয় ব্যক্তিত্ব।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ৪. প্রশাসন, ব্যাংক ও উচ্চপদস্থ সরকারি কর্মকর্তা -->
+      <div class="vip-category">
+        <h3 class="category-title">💼 প্রশাসন, ব্যাংক ও সরকারি কর্মকর্তা</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">জনাব শহিদুল্লাহ</div>
+            <p class="vip-history">গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সাবেক বাণিজ্য সচিব।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">শামসুদ্দিন আহমেদ</div>
+            <p class="vip-history">বাংলাদেশের ইনস্যুরেন্স নিয়ন্ত্রক (কন্ট্রোলার অব ইনস্যুরেন্স) হিসেবে দায়িত্ব পালন করেছেন।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব খোদাবক্স</div>
+            <p class="vip-history">সোনালী ব্যাংকের সাবেক উপ-মহাব্যবস্থাপক (DGM)।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব আনিসুল ইসলাম</div>
+            <p class="vip-history">রূপালী ব্যাংকের সাবেক উপ-মহাব্যবস্থাপক (DGM)।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব আব্দুল বাকী</div>
+            <p class="vip-history">রূপালী ব্যাংকের কর্মকর্তা এবং নারায়ণগঞ্জ অঞ্চলের একজন প্রভাবশালী ও সম্মানিত ব্যক্তিত্ব।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ৫. প্রতিরক্ষা ও আইন-শৃঙ্খলা বাহিনী -->
+      <div class="vip-category">
+        <h3 class="category-title">🛡️ প্রতিরক্ষা ও আইন-শৃঙ্খলা বাহিনী</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">দেলোয়ার হোসেন</div>
+            <p class="vip-history">ব্রিটিশ আমলে নৌবাহিনীতে কর্মরত ছিলেন এবং পরবর্তীতে পাকিস্তান আমলে পুলিশের পিএসপি (PSP) কর্মকর্তা হিসেবে দায়িত্ব পালন করেন।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">রাজিবুল ইসলাম</div>
+            <p class="vip-history">বর্তমানে বাংলাদেশ নৌবাহিনীতে 'কমান্ডর' পদে কর্মরত আছেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ৬. ব্যবসা-বাণিজ্য ও শিল্প খাত -->
+      <div class="vip-category">
+        <h3 class="category-title">🏭 ব্যবসা-বাণিজ্য ও শিল্প খাত</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">জনাব ছেরাজুল হক</div>
+            <p class="vip-history">১৯২০-এর দশকে তৎকালীন সময়ের একজন খ্যাতনামা ও সফল ব্যবসায়ী।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব আজম হাশমি</div>
+            <p class="vip-history">দেশের একজন বিশিষ্ট শিল্পপতি।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব নুরুল হোসেন ভাদুরী</div>
+            <p class="vip-history">আদমজী জুট মিলের ম্যানেজার ছিলেন। বিশেষ করে নোয়াখালী অঞ্চলের মানুষের কর্মসংস্থান ও চাকরি প্রদানে তাঁর অবদান অবিস্মরণীয়।</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ৭. সাংবাদিকতা, আন্তর্জাতিক ও রাজনীতি -->
+      <div class="vip-category">
+        <h3 class="category-title">🌐 সাংবাদিকতা, আন্তর্জাতিক ও রাজনীতি</h3>
+        <div class="vip-grid">
+          <div class="vip-card">
+            <div class="vip-name">জনাব বকতিয়ার সিকদার</div>
+            <p class="vip-history">দীর্ঘদিন মাইজদী প্রেস ক্লাবের সভাপতি হিসেবে দায়িত্ব পালন করেছেন।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব মেজবা উদ্দিন আহম্মেদ</div>
+            <p class="vip-history">বর্তমানে যুক্তরাষ্ট্রে রাজনৈতিকভাবে অত্যন্ত প্রভাবশালী ব্যক্তিত্ব।</p>
+          </div>
+          <div class="vip-card">
+            <div class="vip-name">জনাব আলী হোসেন</div>
+            <p class="vip-history">পাকিস্তান আমলে সরকারি চাকরি নিয়ে অস্ট্রেলিয়ায় গমন করেন এবং বর্তমানে পরিবারসহ সেখানে স্থায়ীভাবে বসবাস করছেন।</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Offline Account / Login Section -->
+  <section id="account-section" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">মেম্বার অ্যাকাউন্ট (নাম ও পাসওয়ার্ড)</h2>
+      
+      <div class="auth-container">
+        <!-- Logged Out View -->
+        <div id="auth-forms">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('login')">লগইন করুন</button>
+            <button class="tab-btn" onclick="switchTab('signup')">নতুন অ্যাকাউন্ট</button>
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label>ইউজার নেম / নাম</label>
+              <input type="text" id="login-username" required placeholder="আপনার নাম লিখুন">
+            </div>
+            <div class="form-group">
+              <label>পাসওয়ার্ড</label>
+              <input type="password" id="login-password" required placeholder="পাসওয়ার্ড লিখুন">
+            </div>
+            <button type="submit" class="submit-btn">লগইন</button>
+          </form>
+
+          <!-- Signup Form -->
+          <form id="signup-form" onsubmit="handleSignup(event)" style="display: none;">
+            <div class="form-group">
+              <label>আপনার নাম</label>
+              <input type="text" id="signup-username" required placeholder="আপনার নাম">
+            </div>
+            <div class="form-group">
+              <label>নতুন পাসওয়ার্ড</label>
+              <input type="password" id="signup-password" required placeholder="পাসওয়ার্ড বেছে নিন">
+            </div>
+            <button type="submit" class="submit-btn">অ্যাকাউন্ট তৈরি করুন</button>
+          </form>
+        </div>
+
+        <!-- Logged In Profile View -->
+        <div id="user-profile" class="user-profile">
+          <h3>স্বাগতম, <span id="display-name" style="color: #143d59;"></span><span id="admin-badge" class="admin-badge" style="display:none;">ADMIN</span>!</h3>
+          <p style="margin-top: 5px; color: green;">✓ আপনার অ্যাকাউন্ট সক্রিয় রয়েছে</p>
+          <button onclick="handleLogout()" class="logout-btn">লগআউট</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logged-in Members List Section -->
+  <section id="members-section" class="section">
+    <div class="container">
+      <h2 class="section-title">রেজিস্ট্রার্ড সদস্যবৃন্দ</h2>
+      <div id="member-list" class="member-grid">
+        <!-- JavaScript দিয়ে এখানে নাম যুক্ত হবে -->
+      </div>
+
+      <!-- Admin Special Log Panel -->
+      <div id="admin-panel" class="admin-panel">
+        <h3 style="color: #e53e3e; text-align: center;">🔒 অ্যাডমিন প্যানেল: ইউজার লগইন রেকর্ড</h3>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ইউজার নাম</th>
+              <th>সর্বশেষ লগইনের সময়</th>
+            </tr>
+          </thead>
+          <tbody id="login-logs-body">
+            <!-- লগইন টাইমস্ট্যাম্প যুক্ত হবে -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Event Section -->
+  <section id="events-section" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">সাম্প্রতিক ইভেন্ট</h2>
+      
+      <div class="single-event-box">
+        <span class="event-badge-tag">RECENT EVENT</span>
+        <h3 class="event-main-title">🎉 GET TOGETHER</h3>
+        <p class="event-desc">ভাদুর মিয়া বাড়ির সকল সদস্য ও গুণীজনদের নিয়ে বিশেষ গেট-টুগেদার অনুষ্ঠান।</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">আমাদের বাড়ির কথা</h2>
+      <div class="about-content">
+        <p>
+          লক্ষ্মীপুর জেলার রামগঞ্জ উপজেলার ঐতিহ্যবাহী <strong>ভাদুর মিয়া বাড়ি (Bhadur Mia Bari)</strong>। 
+          এটি কেবল একটি আবাসন নয়, বরং বহুকালের স্মৃতি, পারিবারিক ঐতিহ্য এবং একতার প্রতীক।
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Link Section -->
+  <section id="group-link" class="section group-section">
+    <div class="container">
+      <h2 class="section-title">আমাদের ফেসবুক গ্রুপ</h2>
+      <p class="group-desc">বাড়ির সবার সাথে যুক্ত থাকতে এবং আপডেট পেতে আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
+      <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" class="group-btn-link">
+        👥 ফেসবুক গ্রুপে জয়েন করুন
+      </a>
+    </div>
+  </section>
+
+  <!-- Location & Maps Section -->
+  <section id="location" class="section bg-light" style="text-align: center;">
+    <div class="container">
+      <h2 class="section-title">আমাদের অবস্থান ও গুগল ম্যাপ</h2>
+      <p class="address-text">
+        📍 <strong>ঠিকানা:</strong> Bhadur Mia Bari - ভাদুর মিয়া বাড়ি, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০।
+      </p>
+      <div class="map-box">
+        <iframe 
+          src="https://maps.google.com/maps?q=Bhadur+Mia+Bari,Ershad+Hossain+Rd,Ramganj+3720&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="380" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Bhadur+Mia+Bari+Ershad+Hossain+Rd+Ramganj+3720" target="_blank" class="map-btn-link">
+        🗺️ সরাসরি গুগল ম্যাপস অ্যাপে লোকেশন দেখুন
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© ২০২৬ ভাদুর মিয়া বাড়ি | সর্বস্বত্ব সংরক্ষিত</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const ADMIN_USER = "Zayan001";
+
+    function switchTab(type) {
+      const loginForm = document.getElementById('login-form');
+      const signupForm = document.getElementById('signup-form');
+      const btns = document.querySelectorAll('.tab-btn');
+
+      if (type === 'login') {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+        btns[0].classList.add('active');
+        btns[1].classList.remove('active');
+      } else {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+        btns[0].classList.remove('active');
+        btns[1].classList.add('active');
+      }
+    }
+
+    function recordLoginTime(username) {
+      let logs = JSON.parse(localStorage.getItem('login_logs')) || {};
+      const now = new Date();
+      logs[username] = now.toLocaleString('bn-BD', { dateStyle: 'medium', timeStyle: 'short' });
+      localStorage.setItem('login_logs', JSON.stringify(logs));
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('signup-username').value.trim();
+      const pass = document.getElementById('signup-password').value;
+
+      let users = JSON.parse(localStorage.getItem('site_users')) || {};
+      
+      if(users[name]) {
+        alert('এই নামের অ্যাকাউন্ট ইতিমধ্যে তৈরি করা আছে!');
+        return;
+      }
+
+      users[name] = pass;
+      localStorage.setItem('site_users', JSON.stringify(users));
+      alert('অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে! এখন লগইন করুন।');
+      switchTab('login');
+      updateMemberList();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const name = document.getElementById('login-username').value.trim();
+      const pass = document.getElementById('login-password').value;
+
+      let users = JSON.parse(localStorage.getItem('site_users')) || {};
+
+      if(users[name] && users[name] === pass) {
+        localStorage.setItem('logged_in_user', name);
+        recordLoginTime(name);
+        checkUserStatus();
+      } else {
+        alert('নাম অথবা পাসওয়ার্ড ভুল হয়েছে!');
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('logged_in_user');
+      checkUserStatus();
+    }
+
+    function checkUserStatus() {
+      const activeUser = localStorage.getItem('logged_in_user');
+      const authForms = document.getElementById('auth-forms');
+      const userProfile = document.getElementById('user-profile');
+      const displayName = document.getElementById('display-name');
+      const adminBadge = document.getElementById('admin-badge');
+      const adminPanel = document.getElementById('admin-panel');
+
+      if(activeUser) {
+        authForms.style.display = 'none';
+        userProfile.style.display = 'block';
+        displayName.innerText = activeUser;
+
+        if (activeUser === ADMIN_USER) {
+          adminBadge.style.display = 'inline-block';
+          adminPanel.style.display = 'block';
+          renderAdminLogs();
+        } else {
+          adminBadge.style.display = 'none';
+          adminPanel.style.display = 'none';
+        }
+      } else {
+        authForms.style.display = 'block';
+        userProfile.style.display = 'none';
+        adminPanel.style.display = 'none';
+      }
+      updateMemberList();
+    }
+
+    function updateMemberList() {
+      const memberListDiv = document.getElementById('member-list');
+      let users = JSON.parse(localStorage.getItem('site_users')) || {};
+      const userNames = Object.keys(users);
+
+      if (userNames.length === 0) {
+        memberListDiv.innerHTML = '<p style="color: #777;">এখনও কোনো সদস্য অ্যাকাউন্ট তৈরি করেননি।</p>';
+        return;
+      }
+
+      memberListDiv.innerHTML = userNames.map(name => `
+        <div class="member-badge">
+          👤 ${name} ${name === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderAdminLogs() {
+      const logsBody = document.getElementById('login-logs-body');
+      let logs = JSON.parse(localStorage.getItem('login_logs')) || {};
+      const userNames = Object.keys(logs);
+
+      if (userNames.length === 0) {
+        logsBody.innerHTML = '<tr><td colspan="2" style="text-align:center;">কোনো লগইন রেকর্ড নেই</td></tr>';
+        return;
+      }
+
+      logsBody.innerHTML = userNames.map(name => `
+        <tr>
+          <td><strong>${name}</strong> ${name === ADMIN_USER ? '(অ্যাডমিন)' : ''}</td>
+          <td>${logs[name]}</td>
+        </tr>
+      `).join('');
+    }
+
+    checkUserStatus();
+  </script>
+
+</body>
+</html>
