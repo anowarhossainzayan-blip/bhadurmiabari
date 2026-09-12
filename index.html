@@ -30,7 +30,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #ffffff; /* সম্পূর্ণ সাদা ব্যাকগ্রাউন্ড */
+      background: #ffffff;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -112,7 +112,7 @@
 
     /* Main Website Content Container */
     #main-website-content {
-      display: none; /* লগইন না করা পর্যন্ত লুকানো থাকবে */
+      display: none;
       background-color: #f9f9f9;
     }
 
@@ -124,7 +124,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                   url('https://static-maps.yandex.ru/1.x/?l=sat&ll=90.8512,23.1021&z=16&size=600,400');
       background-size: cover;
       background-position: center;
@@ -222,6 +222,36 @@
       color: #143d59;
     }
 
+    /* Heritage Highlight Card */
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .heritage-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .heritage-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .heritage-content {
+      padding: 20px;
+    }
+
+    .heritage-content h3 {
+      color: #143d59;
+      margin-bottom: 10px;
+    }
+
     /* Prominent Figures Section */
     .vip-category {
       margin-bottom: 35px;
@@ -260,6 +290,13 @@
       color: #143d59;
       font-weight: 700;
       margin-bottom: 4px;
+    }
+
+    .vip-title-tag {
+      font-size: 0.85rem;
+      color: #e53e3e;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .vip-history {
@@ -465,153 +502,157 @@
     <header class="hero">
       <div class="container">
         <h1 class="welcome-title">WELCOME TO BHADUR MIA BARI</h1>
-        <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০</p>
+        <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০ | আলোকিত মিয়া বাড়ি</p>
         <a href="#events-section" class="btn">ইভেন্ট ও নোটিশ দেখুন</a>
       </div>
     </header>
+
+    <!-- Historical Heritage Section -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">ঐতিহাসিক স্থাপনা ও বইয়ের মোড়ক উন্মোচন</h2>
+        <div class="heritage-grid">
+          
+          <div class="heritage-card">
+            <!-- আপনার ছবি সংযোজন করুন -->
+            <img src="https://via.placeholder.com/600x400?text=Alokito+Mia+Bari+Book" alt="আলোকিত মিয়া বাড়ি বই">
+            <div class="heritage-content">
+              <h3>"আলোকিত মিয়া বাড়ি" মোড়ক উন্মোচন</h3>
+              <p>১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে "আলোকিত মিয়া বাড়ি" বইটির মোড়ক উন্মোচন করা হয়। এটি ইতিহাস ও পূর্বপুরুষদের স্মৃতি সংরক্ষণের এক অপূর্ব প্রয়াস।</p>
+            </div>
+          </div>
+
+          <div class="heritage-card">
+            <img src="https://via.placeholder.com/600x400?text=Mia+Bari+Jame+Mosque" alt="মিয়া বাড়ি জামে মসজিদ">
+            <div class="heritage-content">
+              <h3>মিয়া বাড়ি জামে মসজিদ</h3>
+              <p>উনবিংশ শতাব্দীর শুরুতে (মোগল আমলের শেষভাগে) প্রতিষ্ঠিত। ২০০২ সালের ডিসেম্বরে মরহুম দেলোয়ার হোসেনের উদ্যোগে স্প্যানিশ টাইলস ও মার্বেল পাথর দিয়ে এটি পুনর্নির্মিত হয়।</p>
+            </div>
+          </div>
+
+          <div class="heritage-card">
+            <img src="https://via.placeholder.com/600x400?text=Ershad+Manzil" alt="এরশাদ মঞ্জিল">
+            <div class="heritage-content">
+              <h3>ঐতিহ্যবাহী "এরশাদ মঞ্জিল"</h3>
+              <p>১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তৎকালীন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি, যা আজও কালের সাক্ষ্য বহন করে দাঁড়িয়ে আছে।</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- VIP Section -->
     <section id="vip-section" class="section">
       <div class="container">
         <h2 class="section-title">বাড়ির ঐতিহ্য ও গুণী ব্যক্তিবর্গ</h2>
         
-        <!-- ১. জনপ্রতিনিধি ও সামাজিক নেতৃত্ব -->
+        <!-- ১. আদি পুরুষ ও প্রতিষ্ঠাতা -->
+        <div class="vip-category">
+          <h3 class="category-title">👑 বংশের প্রতিষ্ঠাতা ও আদি পুরুষ</h3>
+          <div class="vip-grid">
+            <div class="vip-card">
+              <div class="vip-name">মরহুম দৌলত গাজী খান</div>
+              <div class="vip-title-tag">মিয়া বংশ ও ভাদুর মিয়া বাড়ির প্রতিষ্ঠাতা</div>
+              <p class="vip-history">পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ। ১৮৫৭ সালের সিপাহী বিদ্রোহের পর সম্রাট বাহাদুর শাহের সাথে রামগঞ্জে আগমন ও বসতি স্থাপন করেন। তাঁর 'বাহাদুর' উপাধি থেকেই পরবর্তীতে 'ভাদুর' নামের উৎপত্তি।</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ২. প্রশাসন, সামরিক ও শিল্প খাত -->
+        <div class="vip-category">
+          <h3 class="category-title">🎖️ সামরিক, প্রশাসন ও সফল শিল্পপতি</h3>
+          <div class="vip-grid">
+            <div class="vip-card">
+              <div class="vip-name">মরহুম দেলোয়ার হোসেন (PSP)</div>
+              <div class="vip-title-tag">ব্রিটিশ রয়্যাল নেভি, লর্ড মাউন্টব্যাটেনের ADC, জিন্নাহর স্টাফ অফিসার ও শিল্পপতি</div>
+              <p class="vip-history">১৯১৪–২০১৪। ব্রিটিশ রয়্যাল নেভিতে কর্মকর্তা, লর্ড মাউন্টব্যাটেনের ADC, জিন্নাহর স্টাফ অফিসার এবং পাকিস্তান আমলে PSP পুলিশ কর্মকর্তা ছিলেন। পরবর্তীতে হোসেন ব্রাদার্স, আলমাস/দীনার সিনেমা হলসহ একাধিক বৃহৎ শিল্পের প্রতিষ্ঠাতা।</p>
+            </div>
+            <div class="vip-card">
+              <div class="vip-name">জনাব শহিদুল্লাহ</div>
+              <div class="vip-title-tag">সাবেক বাণিজ্য সচিব</div>
+              <p class="vip-history">গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সাবেক বাণিজ্য সচিব হিসেবে দায়িত্ব পালন করেছেন।</p>
+            </div>
+            <div class="vip-card">
+              <div class="vip-name">শামসুদ্দিন আহমেদ</div>
+              <div class="vip-title-tag">কন্ট্রোল অফ ইনস্যুরেন্স</div>
+              <p class="vip-history">বাংলাদেশের ইনস্যুরেন্স নিয়ন্ত্রক (কন্ট্রোলার অব ইনস্যুরেন্স) হিসেবে দায়িত্ব পালন করেছেন।</p>
+            </div>
+            <div class="vip-card">
+              <div class="vip-name">রাজিবুল ইসলাম</div>
+              <div class="vip-title-tag">কমান্ডর, বাংলাদেশ নৌবাহিনী</div>
+              <p class="vip-history">বর্তমানে বাংলাদেশ নৌবাহিনীতে 'কমান্ডর' পদে সুনামের সাথে কর্মরত আছেন।</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ৩. জনপ্রতিনিধি ও সামাজিক নেতৃত্ব -->
         <div class="vip-category">
           <h3 class="category-title">🏛️ জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
           <div class="vip-grid">
             <div class="vip-card">
-              <div class="vip-name">জনাব এরশাদ হোসেন মিঞা</div>
-              <p class="vip-history">টানা ৩০ থেকে ৩৫ বছর সফলতার সাথে ইউনিয়ন পরিষদের চেয়ারম্যান হিসেবে দায়িত্ব পালন করেন।</p>
+              <div class="vip-name">মরহুম আলহাজ্ব এরশাদ হোসেন মিয়া (বড় মিয়া)</div>
+              <div class="vip-title-tag">৩৪ বছরের ইউপি চেয়ারম্যান ও সোনাপুর বাজারের প্রতিষ্ঠাতা</div>
+              <p class="vip-history">১৮৯৮-১৯৫২। টানা ৩৪ বছর চেয়ারম্যান ছিলেন। সোনাপুর বাজার প্রতিষ্ঠা করেন। তাঁর নামানুসারে ঐতিহাসিক ১৫ কিমি 'এরশাদ হোসেন রোড' নামকরণ করা হয়। তাঁর সময় মহাত্মা গান্ধী ভাদুরে শান্তি সম্মেলন করেন।</p>
+            </div>
+            <div class="vip-card">
+              <div class="vip-name">মরহুম শাহাদাত হোসেন (বাচ্চু মিয়া)</div>
+              <div class="vip-title-tag">৩৫ বছরের চেয়ারম্যান & রামগঞ্জ থানা পরিষদ প্রধান</div>
+              <p class="vip-history">১৯০০-১৯৯০। টানা ৩৫ বছর ইউপি চেয়ারম্যান, নোয়াখালী জেলা পরিষদ সদস্য (১৯৬২) ও রামগঞ্জ থানা পরিষদের বিনা প্রতিদ্বন্দ্বিতায় নির্বাচিত চেয়ারম্যান ছিলেন। ভাদুর হাই স্কুলের প্রধান শিক্ষক ছিলেন।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">জনাব নাজিম উদ্দিন আহমেদ</div>
-              <p class="vip-history">বিশিষ্ট শিল্পপতি এবং দুইবারের নির্বাচিত সংসদ সদস্য (MP)।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব শাহাদাত হোসেন বাচ্চু মিঞা</div>
-              <p class="vip-history">বহু বছর ইউনিয়ন পরিষদের চেয়ারম্যান হিসেবে দায়িত্ব পালনের পাশাপাশি ভাদুর উচ্চ বিদ্যালয়ের প্রধান শিক্ষক ছিলেন।</p>
+              <div class="vip-title-tag">সাবেক এমপি ও বিশিষ্ট শিল্পপতি</div>
+              <p class="vip-history">দুইবারের নির্বাচিত সংসদ সদস্য (MP) ও দেশের বিশিষ্ট শিল্পপতি।</p>
             </div>
           </div>
         </div>
 
-        <!-- ২. শিক্ষা, প্রযুক্তি ও সমাজসেবা -->
+        <!-- ৪. শিক্ষা, প্রযুক্তি ও সমাজসেবা -->
         <div class="vip-category">
           <h3 class="category-title">🎓 শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
           <div class="vip-grid">
             <div class="vip-card">
-              <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসেন</div>
-              <p class="vip-history">নোয়াখালীর চৌমুহনী সরকারি কলেজের অধ্যক্ষ ছিলেন। তিনি অসংখ্য শিক্ষার্থীকে বিনামূল্যে পড়ালেখার সুযোগ করে দিয়েছেন এবং নিজের বাড়িতে রেখে পড়াশোনা করিয়েছেন।</p>
+              <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসাইন</div>
+              <div class="vip-title-tag">চৌমুহনী সরকারি কলেজের প্রতিষ্ঠাতা অধ্যক্ষ</div>
+              <p class="vip-history">১৯০০-১৯৯০। টানা ৩১ বছর চৌমুহনী কলেজের অধ্যক্ষ হিসেবে নেতৃত্ব দেন এবং ১ বিঘা থেকে ৩৫ একরে রূপান্তর করেন। অসংখ্য দরিদ্র শিক্ষার্থীকে নিজের বাড়িতে রেখে পড়িয়েছেন।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">জনাব আনোয়ার হোসেন</div>
+              <div class="vip-title-tag">শিক্ষক ও প্রখ্যাত সমাজসেবক</div>
               <p class="vip-history">ভাদুর উচ্চ বিদ্যালয়ের শিক্ষক ও প্রখ্যাত সমাজসেবক।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">ডাক্তার আমিন উল্লাহ</div>
+              <div class="vip-title-tag">প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা</div>
               <p class="vip-history">ভাদুর সরকারি প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">জনাব জুবায়ের হোসেন</div>
-              <p class="vip-history">যুক্তরাষ্ট্রে কম্পিউটার চিপ উদ্ভাবনের সাথে যুক্ত থেকে প্রযুক্তি ক্ষেত্রে অবদান রেখেছেন।</p>
+              <div class="vip-title-tag">কম্পিউটার চিপ উদ্ভাবক (ইউএসএ)</div>
+              <p class="vip-history">যুক্তরাষ্ট্রে কম্পিউটার চিপ উদ্ভাবনের সাথে যুক্ত থেকে প্রযুক্তি ক্ষেত্রে বিশ্বমঞ্চে অবদান রেখেছেন।</p>
             </div>
           </div>
         </div>
 
-        <!-- ৩. ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব -->
+        <!-- ৫. ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব -->
         <div class="vip-category">
           <h3 class="category-title">🕌 ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
           <div class="vip-grid">
             <div class="vip-card">
-              <div class="vip-name">আহম্মদ উল্লাহ দরবেশ সাহেব</div>
-              <p class="vip-history">একজন প্রখ্যাত আধ্যাত্মিক সাধক ও প্রবীণ বুজুর্গ।</p>
+              <div class="vip-name">মরহুম আহম্মদ উল্লাহ দরবেশ সাহেব</div>
+              <div class="vip-title-tag">আধ্যাত্মিক সাধক ও শিক্ষানুরাগী</div>
+              <p class="vip-history">প্রখ্যাত আলেম ও বুজুর্গ। ভাদুর আহমাদিয়া বহুমুখী প্রাথমিক বিদ্যালয় প্রতিষ্ঠায় মূল ভূমিকা পালন করেন।</p>
             </div>
             <div class="vip-card">
-              <div class="vip-name">আনোয়ার উল্লা মৌলভী</div>
-              <p class="vip-history">অত্যন্ত সুপরিচিত ও বরেণ্য আলেম; প্রখ্যাত ওয়ায়েজ হিসেবে তাঁর ব্যাপক সুনাম ছিল।</p>
+              <div class="vip-name">মরহুম মাওলানা আনোয়ার উল্যা সাহেব</div>
+              <div class="vip-title-tag">প্রখ্যাত ওয়ায়েজ & জেলা সভাপতি, ওলামায়ে হিন্দ</div>
+              <p class="vip-history">ভারত, পাকিস্তান ও আফগানিস্তানে ওয়াজ-নসিহত করতেন। তৎকালীন ওলামায়ে হিন্দ নোয়াখালী জেলা শাখার সভাপতি ছিলেন।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">হাফেজ আলতাফ হোসেন</div>
-              <p class="vip-history">একজন কোরআনে হাফেজ ও সমাজশ্রদ্ধেয় ব্যক্তিত্ব।</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ৪. প্রশাসন, ব্যাংক ও উচ্চপদস্থ সরকারি কর্মকর্তা -->
-        <div class="vip-category">
-          <h3 class="category-title">💼 প্রশাসন, ব্যাংক ও সরকারি কর্মকর্তা</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">জনাব শহিদুল্লাহ</div>
-              <p class="vip-history">গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সাবেক বাণিজ্য সচিব।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">শামসুদ্দিন আহমেদ</div>
-              <p class="vip-history">বাংলাদেশের ইনস্যুরেন্স নিয়ন্ত্রক (কন্ট্রোলার অব ইনস্যুরেন্স) হিসেবে দায়িত্ব পালন করেছেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব খোদাবক্স</div>
-              <p class="vip-history">সোনালী ব্যাংকের সাবেক উপ-মহাব্যবস্থাপক (DGM)।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব আনিসুল ইসলাম</div>
-              <p class="vip-history">রূপালী ব্যাংকের সাবেক উপ-মহাব্যবস্থাপক (DGM)।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব আব্দুল বাকী</div>
-              <p class="vip-history">রূপালী ব্যাংকের কর্মকর্তা এবং নারায়ণগঞ্জ অঞ্চলের একজন প্রভাবশালী ও সম্মানিত ব্যক্তিত্ব।</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ৫. প্রতিরক্ষা ও আইন-শৃঙ্খলা বাহিনী -->
-        <div class="vip-category">
-          <h3 class="category-title">🛡️ প্রতিরক্ষা ও আইন-শৃঙ্খলা বাহিনী</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">দেলোয়ার হোসেন</div>
-              <p class="vip-history">ব্রিটিশ আমলে নৌবাহিনীতে কর্মরত ছিলেন এবং পরবর্তীতে পাকিস্তান আমলে পুলিশের পিএসপি (PSP) কর্মকর্তা হিসেবে দায়িত্ব পালন করেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">রাজিবুল ইসলাম</div>
-              <p class="vip-history">বর্তমানে বাংলাদেশ নৌবাহিনীতে 'কমান্ডর' পদে কর্মরত আছেন।</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ৬. ব্যবসা-বাণিজ্য ও শিল্প খাত -->
-        <div class="vip-category">
-          <h3 class="category-title">🏭 ব্যবসা-বাণিজ্য ও শিল্প খাত</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">জনাব ছেরাজুল হক</div>
-              <p class="vip-history">১৯২০-এর দশকে তৎকালীন সময়ের একজন খ্যাতনামা ও সফল ব্যবসায়ী।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব আজম হাশমি</div>
-              <p class="vip-history">দেশের একজন বিশিষ্ট শিল্পপতি।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব নুরুল হোসেন ভাদুরী</div>
-              <p class="vip-history">আদমজী জুট মিলের ম্যানেজার ছিলেন। বিশেষ করে নোয়াখালী অঞ্চলের মানুষের কর্মসংস্থান ও চাকরি প্রদানে তাঁর অবদান অবিস্মরণীয়।</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ৭. সাংবাদিকতা, আন্তর্জাতিক ও রাজনীতি -->
-        <div class="vip-category">
-          <h3 class="category-title">🌐 সাংবাদিকতা, আন্তর্জাতিক ও রাজনীতি</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">জনাব বকতিয়ার সিকদার</div>
-              <p class="vip-history">দীর্ঘদিন মাইজদী প্রেস ক্লাবের সভাপতি হিসেবে দায়িত্ব পালন করেছেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব মেজবা উদ্দিন আহম্মেদ</div>
-              <p class="vip-history">বর্তমানে যুক্তরাষ্ট্রে রাজনৈতিকভাবে অত্যন্ত প্রভাবশালী ব্যক্তিত্ব।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব আলী হোসেন</div>
-              <p class="vip-history">পাকিস্তান আমলে সরকারি চাকরি নিয়ে অস্ট্রেলিয়ায় গমন করেন এবং বর্তমানে পরিবারসহ সেখানে স্থায়ীভাবে বসবাস করছেন।</p>
+              <div class="vip-title-tag">কোরআনে হাফেজ</div>
+              <p class="vip-history">একজন কোরআনে হাফেজ ও পরম শ্রদ্ধেয় ব্যক্তিত্ব।</p>
             </div>
           </div>
         </div>
@@ -655,7 +696,7 @@
         <div class="single-event-box">
           <span class="event-badge-tag">RECENT EVENT</span>
           <h3 class="event-main-title">🎉 GET TOGETHER</h3>
-          <p class="event-desc">ভাদুর মিয়া বাড়ির সকল সদস্য ও গুণীজনদের নিয়ে বিশেষ গেট-টুগেদার অনুষ্ঠান।</p>
+          <p class="event-desc">ভাদুর মিয়া বাড়ির সকল সদস্য ও গুণীজনদের নিয়ে বিশেষ গেট-টুগেদার অনুষ্ঠান।</p>
         </div>
       </div>
     </section>
@@ -664,9 +705,9 @@
     <section class="section group-section bg-light">
       <div class="container">
         <h2 class="section-title">আমাদের ফেসবুক গ্রুপ</h2>
-        <p style="margin-bottom: 20px;">বাড়ির সবার সাথে যুক্ত থাকতে এবং আপডেট পেতে আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
+        <p style="margin-bottom: 20px;">বাড়ির সবার সাথে যুক্ত থাকতে এবং আপডেট পেতে আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
         <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" class="group-btn-link">
-          👥 ফেসবুক গ্রুপে জয়েন করুন
+          👥 ফেসবুক গ্রুপে জয়েন করুন
         </a>
       </div>
     </section>
