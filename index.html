@@ -27,7 +27,7 @@
     .auth-page {
       width: 100%;
       min-height: 100vh;
-      background: #ffffff;
+      background: #f4f6f9;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,6 +73,7 @@
       font-size: 0.95rem;
       outline: none;
       font-family: 'Hind Siliguri', sans-serif;
+      transition: border-color 0.2s;
     }
 
     .form-group input:focus, .form-group textarea:focus {
@@ -90,6 +91,7 @@
       font-size: 1rem;
       cursor: pointer;
       margin-top: 10px;
+      transition: background-color 0.2s;
     }
 
     .auth-btn:hover {
@@ -138,6 +140,23 @@
       font-weight: bold;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #f4b41a;
+    }
+
     .user-status-nav {
       color: #fff;
       font-size: 0.95rem;
@@ -150,10 +169,15 @@
       background: #e53e3e;
       color: white;
       border: none;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .logout-btn-nav:hover {
+      background: #c53030;
     }
 
     /* Hero Section */
@@ -189,6 +213,23 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #d99e12;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid #f4b41a;
+      color: #f4b41a;
+    }
+
+    .btn-outline:hover {
+      background-color: #f4b41a;
+      color: #143d59;
     }
 
     /* Utilities */
@@ -211,7 +252,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .heritage-card {
@@ -445,6 +486,11 @@
       font-weight: bold;
       text-decoration: none;
       border-radius: 50px;
+      transition: background-color 0.2s;
+    }
+
+    .group-btn-link:hover {
+      background-color: #145dbf;
     }
 
     .map-box {
@@ -473,12 +519,12 @@
           <input type="text" id="login-name" required placeholder="আপনার নাম লিখুন">
         </div>
         <div class="form-group">
-          <label>Password (পাসওয়ার্ড)</label>
-          <input type="password" id="login-pass" required placeholder="পাসওয়ার্ড দিন">
+          <label>Password (পাসওয়ার্ড)</label>
+          <input type="password" id="login-pass" required placeholder="পাসওয়ার্ড দিন">
         </div>
         <button type="submit" class="auth-btn">Login</button>
       </form>
-      <span class="toggle-link" onclick="showRegisterForm()">no account? create account</span>
+      <span class="toggle-link" onclick="showRegisterForm()">No account? Create account</span>
     </div>
 
     <div id="register-box" class="auth-box" style="display: none;">
@@ -489,8 +535,8 @@
           <input type="text" id="reg-name" required placeholder="আপনার নাম লিখুন">
         </div>
         <div class="form-group">
-          <label>Password (পাসওয়ার্ড)</label>
-          <input type="password" id="reg-pass" required placeholder="পাসওয়ার্ড নির্ধারণ করুন">
+          <label>Password (পাসওয়ার্ড)</label>
+          <input type="password" id="reg-pass" required placeholder="পাসওয়ার্ড নির্ধারণ করুন">
         </div>
         <div class="form-group">
           <label>Birthdate (জন্ম তারিখ)</label>
@@ -502,7 +548,7 @@
         </div>
         <div class="form-group">
           <label>Family (পরিবারের তথ্য / বংশ)</label>
-          <input type="text" id="reg-family" required placeholder="পিতার নাম বা বংশের পরিচয়">
+          <input type="text" id="reg-family" required placeholder="পিতার নাম বা বংশের পরিচয়">
         </div>
         <button type="submit" class="auth-btn">Register</button>
       </form>
@@ -515,6 +561,14 @@
     <nav class="navbar">
       <div class="container nav-container">
         <div class="logo">ভাদুর মিয়া বাড়ি</div>
+        
+        <ul class="nav-links">
+          <li><a href="#heritage-section">ঐতিহ্য</a></li>
+          <li><a href="#books-section">বই ও প্রকাশনা</a></li>
+          <li><a href="#vip-section">গুরুজন ও গুণীজন</a></li>
+          <li><a href="#events-section">ইভেন্ট</a></li>
+        </ul>
+
         <div class="user-status-nav">
           <span id="nav-username"></span>
           <button onclick="handleLogout()" class="logout-btn-nav">Logout</button>
@@ -525,22 +579,17 @@
     <header class="hero">
       <div class="container">
         <h1 class="welcome-title">WELCOME TO BHADUR MIA BARI</h1>
-        <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০ | আলোকিত মিয়া বাড়ি</p>
-        <a href="#events-section" class="btn">ইভেন্ট ও নোটিশ দেখুন</a>
+        <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০ | ঐতিহ্য ও ইতিহাসের প্রতীক</p>
+        <a href="#books-section" class="btn">📚 প্রকাশনা দেখুন</a>
+        <a href="#vip-section" class="btn btn-outline">👑 গুরুজনদের তালিকা</a>
       </div>
     </header>
 
-    <section class="section bg-light">
+    <!-- Section 1: Heritage Places Only -->
+    <section id="heritage-section" class="section bg-light">
       <div class="container">
-        <h2 class="section-title">ঐতিহাসিক স্থাপনা ও বইয়ের মোড়ক উন্মোচন</h2>
+        <h2 class="section-title">ঐতিহাসিক স্থাপনা ও পরিচিতি</h2>
         <div class="heritage-grid">
-          <div class="heritage-card">
-            <img src="https://via.placeholder.com/600x400?text=Alokito+Mia+Bari+Book" alt="বই মোড়ক">
-            <div class="heritage-content">
-              <h3>"আলোকিত মিয়া বাড়ি" মোড়ক উন্মোচন</h3>
-              <p>১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে "আলোকিত মিয়া বাড়ি" বইটির মোড়ক উন্মোচন করা হয়।</p>
-            </div>
-          </div>
           <div class="heritage-card">
             <img src="https://via.placeholder.com/600x400?text=Mia+Bari+Jame+Mosque" alt="মসজিদ">
             <div class="heritage-content">
@@ -559,12 +608,32 @@
       </div>
     </section>
 
-    <section id="vip-section" class="section">
+    <!-- Section 2: NEW Lesson - Books & Publications -->
+    <section id="books-section" class="section">
       <div class="container">
-        <h2 class="section-title">বাড়ির ঐতিহ্য ও গুণী ব্যক্তিবর্গ</h2>
+        <h2 class="section-title">📖 আমাদের বই ও প্রকাশনা (Lesson)</h2>
+        <div class="heritage-grid" style="grid-template-columns: 1fr;">
+          <div class="heritage-card" style="display: flex; flex-wrap: wrap; align-items: center;">
+            <img src="https://via.placeholder.com/600x400?text=Alokito+Mia+Bari+Book" alt="বই মোড়ক" style="max-width: 400px; width: 100%;">
+            <div class="heritage-content" style="flex: 1; padding: 30px;">
+              <span class="event-badge-tag" style="background: #143d59;">বিশেষ প্রকাশনা</span>
+              <h3 style="font-size: 1.6rem;">"আলোকিত মিয়া বাড়ি" মোড়ক উন্মোচন</h3>
+              <p style="font-size: 1.05rem; margin-top: 10px;">
+                ১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে <strong>"আলোকিত মিয়া বাড়ি"</strong> বইটির শুভ মোড়ক উন্মোচন করা হয়। এই বইটিতে ভাদুর মিয়া বাড়ির গৌরবোজ্জ্বল ইতিহাস ও ঐতিহ্য লিপিবদ্ধ রয়েছে।
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: NEW Lesson - Elders & VIPs -->
+    <section id="vip-section" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">👑 বাড়ির গুরুজন ও গুণীজন (Lesson)</h2>
         
         <div class="vip-category">
-          <h3 class="category-title">👑 বংশের প্রতিষ্ঠাতা ও আদি পুরুষ</h3>
+          <h3 class="category-title">বংশের প্রতিষ্ঠাতা ও আদি পুরুষ</h3>
           <div class="vip-grid">
             <div class="vip-card">
               <div class="vip-name">মরহুম দৌলত গাজী খান</div>
@@ -575,7 +644,7 @@
         </div>
 
         <div class="vip-category">
-          <h3 class="category-title">🎖️ সামরিক, প্রশাসন ও সফল শিল্পপতি</h3>
+          <h3 class="category-title">সামরিক, প্রশাসন ও সফল শিল্পপতি</h3>
           <div class="vip-grid">
             <div class="vip-card">
               <div class="vip-name">মরহুম দেলোয়ার হোসেন (PSP)</div>
@@ -601,7 +670,7 @@
         </div>
 
         <div class="vip-category">
-          <h3 class="category-title">🏛️ জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
+          <h3 class="category-title">জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
           <div class="vip-grid">
             <div class="vip-card">
               <div class="vip-name">মরহুম আলহাজ্ব এরশাদ হোসেন মিয়া</div>
@@ -611,7 +680,7 @@
             <div class="vip-card">
               <div class="vip-name">মরহুম শাহাদাত হোসেন (বাচ্চু মিয়া)</div>
               <div class="vip-title-tag">৩৫ বছরের চেয়ারম্যান & রামগঞ্জ থানা পরিষদ প্রধান</div>
-              <p class="vip-history">১৯০০-১৯ ৯০। টানা ৩৫ বছর চেয়ারম্যান ও রামগঞ্জ থানা পরিষদের চেয়ারম্যান ছিলেন।</p>
+              <p class="vip-history">১৯০০-১৯৯০। টানা ৩৫ বছর চেয়ারম্যান ও রামগঞ্জ থানা পরিষদের চেয়ারম্যান ছিলেন।</p>
             </div>
             <div class="vip-card">
               <div class="vip-name">জনাব নাজিম উদ্দিন আহমেদ</div>
@@ -622,7 +691,7 @@
         </div>
 
         <div class="vip-category">
-          <h3 class="category-title">🎓 শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
+          <h3 class="category-title">শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
           <div class="vip-grid">
             <div class="vip-card">
               <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসাইন</div>
@@ -648,7 +717,7 @@
         </div>
 
         <div class="vip-category">
-          <h3 class="category-title">🕌 ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
+          <h3 class="category-title">ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
           <div class="vip-grid">
             <div class="vip-card">
               <div class="vip-name">মরহুম আহম্মদ উল্লাহ দরবেশ সাহেব</div>
@@ -671,7 +740,7 @@
     </section>
 
     <!-- Review & Rating Section -->
-    <section class="section bg-light">
+    <section class="section">
       <div class="container">
         <h2 class="section-title">রিভিউ ও রেটিং দিন</h2>
         
@@ -696,7 +765,7 @@
       </div>
     </section>
 
-    <section id="members-section" class="section">
+    <section id="members-section" class="section bg-light">
       <div class="container">
         <h2 class="section-title">রেজিস্ট্রার্ড সদস্যবৃন্দ</h2>
         <div id="member-list" class="member-grid"></div>
@@ -719,7 +788,7 @@
       </div>
     </section>
 
-    <section id="events-section" class="section bg-light">
+    <section id="events-section" class="section">
       <div class="container">
         <h2 class="section-title">সাম্প্রতিক ইভেন্ট</h2>
         <div class="single-event-box">
@@ -730,15 +799,15 @@
       </div>
     </section>
 
-    <section class="section group-section">
+    <section class="section group-section bg-light">
       <div class="container">
         <h2 class="section-title">আমাদের ফেসবুক গ্রুপ</h2>
         <p style="margin-bottom: 20px;">আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
-        <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" class="group-btn-link">👥 ফেসবুক গ্রুপে জয়েন করুন</a>
+        <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" rel="noopener noreferrer" class="group-btn-link">👥 ফেসবুক গ্রুপে জয়েন করুন</a>
       </div>
     </section>
 
-    <section class="section bg-light" style="text-align: center;">
+    <section class="section" style="text-align: center;">
       <div class="container">
         <h2 class="section-title">আমাদের অবস্থান ও গুগল ম্যাপ</h2>
         <p style="margin-bottom: 15px;">📍 <strong>ঠিকানা:</strong> Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০।</p>
@@ -764,6 +833,16 @@
 
   <script>
     const ADMIN_USER = "Zayan001";
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
     function showRegisterForm() {
       document.getElementById('login-box').style.display = 'none';
@@ -792,7 +871,7 @@
 
       users[name] = { password: pass, birthdate, religion, family };
       localStorage.setItem('site_users_db', JSON.stringify(users));
-      alert('অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!');
+      alert('অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!');
       logUserIn(name);
     }
 
@@ -805,7 +884,7 @@
       if (users[name] && users[name].password === pass) {
         logUserIn(name);
       } else {
-        alert('নাম অথবা পাসওয়ার্ড ভুল হয়েছে!');
+        alert('নাম অথবা পাসওয়ার্ড ভুল হয়েছে!');
       }
     }
 
@@ -832,7 +911,9 @@
       if (activeUser) {
         authPage.style.display = 'none';
         mainContent.style.display = 'block';
-        navUsername.innerHTML = `👤 <strong>${activeUser}</strong> ${activeUser === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}`;
+        
+        const cleanName = escapeHTML(activeUser);
+        navUsername.innerHTML = `👤 <strong>${cleanName}</strong> ${activeUser === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}`;
         
         if (activeUser === ADMIN_USER) {
           adminPanel.style.display = 'block';
@@ -860,11 +941,14 @@
         return;
       }
 
-      memberListDiv.innerHTML = userNames.map(name => `
-        <div class="member-badge">
-          👤 ${name} ${name === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}
-        </div>
-      `).join('');
+      memberListDiv.innerHTML = userNames.map(name => {
+        const cleanName = escapeHTML(name);
+        return `
+          <div class="member-badge">
+            👤 ${cleanName} ${name === ADMIN_USER ? '<span class="admin-badge">ADMIN</span>' : ''}
+          </div>
+        `;
+      }).join('');
     }
 
     function renderAdminPanel() {
@@ -880,13 +964,19 @@
 
       logsBody.innerHTML = userNames.map(name => {
         const u = users[name];
+        const cleanName = escapeHTML(name);
+        const cleanBirth = escapeHTML(u.birthdate || 'N/A');
+        const cleanReligion = escapeHTML(u.religion || 'N/A');
+        const cleanFamily = escapeHTML(u.family || 'N/A');
+        const cleanLog = escapeHTML(logs[name] || 'লগইন করেনি');
+
         return `
           <tr>
-            <td><strong>${name}</strong> ${name === ADMIN_USER ? '(অ্যাডমিন)' : ''}</td>
-            <td>${u.birthdate || 'N/A'}</td>
-            <td>${u.religion || 'N/A'}</td>
-            <td>${u.family || 'N/A'}</td>
-            <td>${logs[name] || 'লগইন করেনি'}</td>
+            <td><strong>${cleanName}</strong> ${name === ADMIN_USER ? '(অ্যাডমিন)' : ''}</td>
+            <td>${cleanBirth}</td>
+            <td>${cleanReligion}</td>
+            <td>${cleanFamily}</td>
+            <td>${cleanLog}</td>
           </tr>
         `;
       }).join('');
@@ -897,10 +987,17 @@
       e.preventDefault();
       const activeUser = localStorage.getItem('logged_in_user');
       const comment = document.getElementById('userComment').value.trim();
-      const rating = document.querySelector('input[name="rating"]:checked').value;
+      const ratingElem = document.querySelector('input[name="rating"]:checked');
+
+      if (!ratingElem) {
+        alert('অনুগ্রহ করে একটি রেটিং (স্টার) নির্বাচন করুন!');
+        return;
+      }
+
+      const rating = parseInt(ratingElem.value);
 
       let reviews = JSON.parse(localStorage.getItem('site_reviews')) || [];
-      reviews.unshift({ name: activeUser, comment, rating: parseInt(rating) });
+      reviews.unshift({ name: activeUser, comment, rating });
       
       localStorage.setItem('site_reviews', JSON.stringify(reviews));
       document.getElementById('reviewForm').reset();
@@ -914,21 +1011,28 @@
       if (!display) return;
       
       if (reviews.length === 0) {
-        display.innerHTML = '<p style="text-align:center; color:#777; grid-column: 1/-1;">এখনো কোনো রিভিউ দেওয়া হয়নি। প্রথম রিভিউটি আপনি দিন!</p>';
+        display.innerHTML = '<p style="text-align:center; color:#777; grid-column: 1/-1;">এখনো কোনো রিভিউ দেওয়া হয়নি। প্রথম রিভিউটি আপনি দিন!</p>';
         return;
       }
 
-      display.innerHTML = reviews.map(r => `
-        <div class="review-item">
-          <div class="review-item-header">
-            <span class="review-item-name">👤 ${r.name}</span>
-            <span class="review-item-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+      display.innerHTML = reviews.map(r => {
+        const cleanName = escapeHTML(r.name);
+        const cleanComment = escapeHTML(r.comment);
+        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+
+        return `
+          <div class="review-item">
+            <div class="review-item-header">
+              <span class="review-item-name">👤 ${cleanName}</span>
+              <span class="review-item-stars">${stars}</span>
+            </div>
+            <p class="review-item-comment">${cleanComment}</p>
           </div>
-          <p class="review-item-comment">${r.comment}</p>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
+    // Initialize Page
     checkAuthStatus();
   </script>
 </body>
