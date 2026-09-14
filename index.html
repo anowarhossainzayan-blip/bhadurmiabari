@@ -21,19 +21,6 @@
       --shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    body.dark-theme {
-      --bg-main: #121212;
-      --bg-secondary: #1a1a1a;
-      --bg-card: #242424;
-      --bg-light: #2d2d2d;
-      --text-main: #e0e0e0;
-      --text-muted: #aaaaaa;
-      --nav-bg: #0f2b3e;
-      --accent-color: #f4b41a;
-      --border-color: #444444;
-      --shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -47,7 +34,6 @@
       background-color: var(--bg-main);
       width: 100%;
       overflow-x: hidden;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     /* Auth Screen Box */
@@ -77,10 +63,6 @@
       margin-bottom: 25px;
       font-family: 'Poppins', sans-serif;
       font-size: 1.8rem;
-    }
-
-    body.dark-theme .auth-box h2 {
-      color: var(--accent-color);
     }
 
     .form-group {
@@ -197,22 +179,6 @@
 
     .nav-tab-btn:hover, .nav-tab-btn.active {
       background-color: var(--accent-color);
-      color: #143d59;
-    }
-
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-
-    .theme-toggle-btn:hover {
-      background: #fff;
       color: #143d59;
     }
 
@@ -570,42 +536,46 @@
       margin-bottom: 15px;
     }
 
-    /* AI Assistant Floating Widget */
+    /* CUSTOM SHINY AI LOGO & FLOATING WIDGET STYLES */
     .ai-widget-btn {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      background: var(--nav-bg);
-      color: var(--accent-color);
+      background: linear-gradient(135deg, #143d59, #0e2a3e);
       border: 2px solid var(--accent-color);
-      font-size: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(20, 61, 89, 0.4);
       z-index: 1000;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
     }
 
     .ai-widget-btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(244, 180, 26, 0.5);
+    }
+
+    .ai-custom-icon {
+      width: 32px;
+      height: 32px;
     }
 
     .ai-chat-box {
       position: fixed;
-      bottom: 95px;
+      bottom: 98px;
       right: 25px;
-      width: 350px;
+      width: 360px;
       max-width: 90vw;
-      height: 480px;
+      height: 500px;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.2);
       display: none;
       flex-direction: column;
       z-index: 1000;
@@ -613,19 +583,20 @@
     }
 
     .ai-chat-header {
-      background: var(--nav-bg);
+      background: linear-gradient(135deg, #143d59, #1c5276);
       color: #fff;
-      padding: 15px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .ai-chat-header h4 {
-      font-size: 1rem;
+    .ai-chat-header-title {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     .ai-close-btn {
@@ -634,6 +605,11 @@
       color: #fff;
       font-size: 18px;
       cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .ai-close-btn:hover {
+      opacity: 1;
     }
 
     .ai-chat-messages {
@@ -643,14 +619,15 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .ai-msg {
       padding: 10px 14px;
-      border-radius: 10px;
+      border-radius: 12px;
       max-width: 85%;
-      line-height: 1.4;
+      line-height: 1.45;
+      word-wrap: break-word;
     }
 
     .ai-msg.bot {
@@ -677,7 +654,7 @@
 
     .ai-chat-input-area input {
       flex: 1;
-      padding: 8px 12px;
+      padding: 10px 14px;
       border: 1px solid var(--border-color);
       border-radius: 20px;
       outline: none;
@@ -690,10 +667,15 @@
       background: var(--nav-bg);
       color: var(--accent-color);
       border: none;
-      padding: 8px 15px;
+      padding: 8px 16px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .ai-send-btn:hover {
+      background: #0e2a3e;
     }
 
     footer {
@@ -756,7 +738,7 @@
   <!-- Main Website Content -->
   <div id="main-website-content" style="display: none;">
     
-    <!-- Navbar with Tabs & Dark Mode Toggle -->
+    <!-- Navbar with Tabs -->
     <nav class="navbar">
       <div class="container nav-container">
         <div class="logo" onclick="switchTab('home-tab')">ভাদুর মিয়া বাড়ি</div>
@@ -764,7 +746,6 @@
         <ul class="nav-tabs">
           <li><button id="btn-home-tab" class="nav-tab-btn active" onclick="switchTab('home-tab')">🏠 হোম</button></li>
           <li><button id="btn-elders-tab" class="nav-tab-btn" onclick="switchTab('elders-tab')">📚 গুরুজন ও বই</button></li>
-          <li><button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button></li>
         </ul>
 
         <div class="user-status-nav">
@@ -892,7 +873,6 @@
         </div>
       </section>
     </div>
-
 
     <!-- TAB 2: ELDERS & BOOKS PAGE -->
     <div id="elders-tab" class="tab-content">
@@ -1026,19 +1006,30 @@
       </section>
     </div>
 
-    <!-- AI Assistant Disk (Floating UI) -->
-    <button class="ai-widget-btn" onclick="toggleAIChat()">🤖</button>
+    <!-- CUSTOM SHINY AI FLOATING BUTTON WITH SVG LOGO -->
+    <button class="ai-widget-btn" onclick="toggleAIChat()" title="AI Assistant">
+      <svg class="ai-custom-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#f4b41a"/>
+        <path d="M19 2L20.25 5.75L24 7L20.25 8.25L19 12L17.75 8.25L14 7L17.75 5.75L19 2Z" fill="#ffffff" opacity="0.8"/>
+      </svg>
+    </button>
 
+    <!-- AI CHAT BOX -->
     <div class="ai-chat-box" id="aiChatBox">
       <div class="ai-chat-header">
-        <h4>🤖 Bari Assistant AI</h4>
+        <div class="ai-chat-header-title">
+          <svg style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#f4b41a"/>
+          </svg>
+          <span>Smart AI Assistant</span>
+        </div>
         <button class="ai-close-btn" onclick="toggleAIChat()">✖</button>
       </div>
-        <div class="ai-chat-messages" id="aiMessages">
-          <div class="ai-msg bot">আসসালামু আলাইকুম! আমি 'ভাদুর মিয়া বাড়ি' প্রফেশনাল এআই অ্যাসিস্ট্যান্ট। আমাদের ইতিহাস, জামে মসজিদ, এরশাদ মঞ্জিল বা গুরুজনদের সম্পর্কে যেকোনো প্রশ্ন করতে পারেন।</div>
-        </div>
+      <div class="ai-chat-messages" id="aiMessages">
+        <div class="ai-msg bot">আসসালামু আলাইকুম! ভাদুর মিয়া বাড়ির স্মার্ট এআই অ্যাসিস্ট্যান্টে আপনাকে স্বাগতম! 🌟 আপনি যেকোনো বিষয়ে প্রশ্ন করতে পারেন, আমি আছি আপনার সাহায্যে! 😊</div>
+      </div>
       <div class="ai-chat-input-area">
-        <input type="text" id="aiUserInput" placeholder="এখানে প্রশ্ন লিখুন..." onkeypress="handleAIPress(event)">
+        <input type="text" id="aiUserInput" placeholder="যেকোনো কথা বা প্রশ্ন লিখুন..." onkeypress="handleAIPress(event)">
         <button class="ai-send-btn" onclick="sendAIMessage()">পাঠান</button>
       </div>
     </div>
@@ -1063,23 +1054,6 @@
         .replace(/'/g, '&#039;');
     }
 
-    /* Dark Mode Toggle */
-    function toggleTheme() {
-      document.body.classList.toggle('dark-theme');
-      const isDark = document.body.classList.contains('dark-theme');
-      document.getElementById('themeBtn').innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-      localStorage.setItem('site_theme', isDark ? 'dark' : 'light');
-    }
-
-    // Load saved theme
-    if (localStorage.getItem('site_theme') === 'dark') {
-      document.body.classList.add('dark-theme');
-      setTimeout(() => {
-        const themeBtn = document.getElementById('themeBtn');
-        if(themeBtn) themeBtn.innerText = '☀️ Light Mode';
-      }, 100);
-    }
-
     /* Tab Switcher Function */
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -1100,7 +1074,7 @@
       window.scrollTo(0, 0);
     }
 
-    /* AI Assistant Logic */
+    /* Smart AI Assistant Toggle */
     function toggleAIChat() {
       const box = document.getElementById('aiChatBox');
       box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
@@ -1122,40 +1096,89 @@
       input.value = '';
       msgsDiv.scrollTop = msgsDiv.scrollHeight;
 
-      // AI Knowledge Base Response
+      // Generative Conversational Response Simulation
       setTimeout(() => {
-        let reply = getAIResponse(text);
+        let reply = generateSmartAIResponse(text);
         msgsDiv.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
         msgsDiv.scrollTop = msgsDiv.scrollHeight;
-      }, 500);
+      }, 350);
     }
 
-    function getAIResponse(query) {
-      const q = query.toLowerCase();
+    /* Advanced Natural AI Conversational Engine with Welcome & Hello */
+    function generateSmartAIResponse(query) {
+      const q = query.toLowerCase().trim();
 
+      /* 1. Greetings, Hello & Welcome Responses */
+      if (/^(hi|hello|hey|হাই|হ্যালো|হেই|সালাম|assalamu alaikum|assalamualaykum|welcome|ওয়েলকাম)/.test(q)) {
+        const welcomeReplies = [
+          "ওয়ালাইকুমুস সালাম! হ্যালো! আমাদের স্মার্ট এআই অ্যাসিস্ট্যান্টে আপনাকে স্বাগতম! আজ আপনাকে কীভাবে সাহায্য করতে পারি? 😊",
+          "হ্যালো! দারুণ লাগলো আপনার সাথে কথা বলে। ভাদুর মিয়া বাড়ির ওয়েবসাইট অথবা যেকোনো সাধারণ বিষয়ে আপনি আমাকে প্রশ্ন করতে পারেন!",
+          "আসসালামু আলাইকুম! আপনাকে অনেক অনেক স্বাগতম! বলুন, আজ কী বিষয়ে জানতে চান?"
+        ];
+        return welcomeReplies[Math.floor(Math.random() * welcomeReplies.length)];
+      }
+
+      if (q.includes('কেমন আছেন') || q.includes('কেমন আছো') || q.includes('how are you')) {
+        return "আলহামদুলিল্লাহ্‌, আমি একদম ঠিক আছি এবং চমৎকার কাজ করছি! আপনি কেমন আছেন বলুন?";
+      }
+      
+      if (q.includes('ভাল আছি') || q.includes('ভালো আছি') || q.includes('fine') || q.includes('good')) {
+        return "শুনে দারুণ লাগলো! বলুন, আজ আপনাকে কোন বিষয়ে সহযোগিতা করতে পারি?";
+      }
+
+      if (q.includes('আপনার নাম') || q.includes('তোমার নাম') || q.includes('who are you') || q.includes('তুমি কে')) {
+        return "আমি আপনার পার্সোনাল স্মার্ট এআই অ্যাসিস্ট্যান্ট। আমি ভাদুর মিয়া বাড়ির ইতিহাস এবং যেকোনো সাধারণ প্রশ্নের উত্তর দিতে প্রস্তুত!";
+      }
+
+      if (q.includes('ধন্যবাদ') || q.includes('thanks') || q.includes('thank you')) {
+        return "আপনাকেও অসংখ্য ধন্যবাদ! আপনার যেকোনো প্রয়োজনে আমি সবসময় এখানে আছি।";
+      }
+
+      if (/^(bye|goodbye|বাই|খোদা হাফেজ|আল্লাহ হাফেজ)/.test(q)) {
+        return "আল্লাহ হাফেজ! ভালো থাকবেন। যেকোনো সময় প্রয়োজন হলে আমাকে ডাকবেন! 👋";
+      }
+
+      /* 2. Bhadur Mia Bari Context Knowledge */
       if (q.includes('ইতিহাস') || q.includes('প্রতিষ্ঠা') || q.includes('দৌলত গাজী')) {
-        return "ভাদুর মিয়া বাড়ি ও মিয়া বংশের প্রতিষ্ঠাতা মরহুম দৌলত গাজী খান। তিনি পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ ছিলেন। ১৮৫৭ সালে সিপাহী বিদ্রোহের পর সম্রাট বাহাদুর শাহের সাথে তিনি রামগঞ্জে আগমন ও বসতি স্থাপন করেন।";
+        return "ভাদুর মিয়া বাড়ি ও মিয়া বংশের প্রতিষ্ঠাতা মরহুম দৌলত গাজী খান। তিনি পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ ছিলেন। ১৮৫৭ সালে সিপাহী বিদ্রোহের পর তিনি রামগঞ্জে বসতি স্থাপন করেন।";
       }
       if (q.includes('মসজিদ')) {
-        return "মিয়া বাড়ি জামে মসজিদটি উনবিংশ শতাব্দীর শুরুতে প্রতিষ্ঠিত হয়। ২০০২ সালের ডিসেম্বরে মার্বেল পাথর দিয়ে এটি পুনর্নির্মিত হয়।";
+        return "মিয়া বাড়ি জামে মসজিদটি উনবিংশ শতাব্দীর শুরুতে প্রতিষ্ঠিত হয়। ২০০২ সালের ডিসেম্বরে মার্বেল পাথর দিয়ে এটি সুন্দরভাবে পুনর্নির্মিত করা হয়।";
       }
       if (q.includes('এরশাদ মঞ্জিল') || q.includes('দালান') || q.includes('বিল্ডিং')) {
-        return "ঐতিহ্যবাহী 'এরশাদ মঞ্জিল' ১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তদানীন্তন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি।";
+        return "ঐতিহ্যবাহী 'এরশাদ মঞ্জিল' ১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তৎকালীন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি।";
       }
       if (q.includes('বই') || q.includes('প্রকাশনা') || q.includes('আলোকিত মিয়া বাড়ি')) {
         return "১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে 'আলোকিত মিয়া বাড়ি' বইটির শুভ মোড়ক উন্মোচন করা হয়।";
       }
-      if (q.includes('ঠিকানা') || q.includes('কোথায়') || q.includes('লোকেশন') || q.includes('ম্যাপ')) {
-        return "আমাদের ঠিকানা: Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০, লক্ষ্মীপুর। ওয়েবসাইটের ম্যাপ অংশে এর গুগল লোকেশন দেয়া আছে।";
+      if (q.includes('ঠিকানা') || q.includes('কোথায়') || q.includes('লোকেশন') || q.includes('ম্যাপ')) {
+        return "আমাদের ঠিকানা: Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০, লক্ষ্মীপুর।";
       }
       if (q.includes('ফেসবুক') || q.includes('গ্রুপ')) {
-        return "আমাদের একটি অফিশিয়াল ফেসবুক গ্রুপ রয়েছে! ওয়েবসাইটের হোম পেজে 'ফেসবুক গ্রুপে জয়েন করুন' বাটনে ক্লিক করে যুক্ত হতে পারেন।";
-      }
-      if (q.includes('কেমন') || q.includes('হাই') || q.includes('হ্যালো') || q.includes('hello') || q.includes('hi')) {
-        return "হ্যালো! আমি আপনাকে ভাদুর মিয়া বাড়ি সম্পর্কে কী তথ্য দিয়ে সাহায্য করতে পারি?";
+        return "আমাদের একটি অফিশিয়াল ফেসবুক গ্রুপ রয়েছে! ওয়েবসাইটের হোম পেজে 'ফেসবুক গ্রুপে জয়েন করুন' বাটনে ক্লিক করে সরাসরি যুক্ত হতে পারেন।";
       }
 
-      return "ধন্যবাদ আপনার প্রশ্নের জন্য। আমি ভাদুর মিয়া বাড়ির ইতিহাস, মসজিদ, এরশাদ মঞ্জিল, প্রতিষ্ঠাতা, বা বই সম্পর্কিত প্রশ্নের উত্তর দিতে পারি। অনুগ্রহ করে নির্দিষ্ট বিষয়ে জিজ্ঞেস করুন।";
+      /* 3. General Knowledge & Universal Topics */
+      if (q.includes('সময়') || q.includes('তারিখ') || q.includes('time') || q.includes('date')) {
+        const now = new Date();
+        return `বর্তমানে সময়: ${now.toLocaleTimeString('bn-BD')} এবং তারিখ: ${now.toLocaleDateString('bn-BD')}`;
+      }
+      if (q.includes('বিজ্ঞান') || q.includes('প্রযুক্তি') || q.includes('কম্পিউটার') || q.includes('এআই')) {
+        return "প্রযুক্তি আমাদের জীবনকে সহজ করে দিয়েছে। এআই বা কৃত্রিম বুদ্ধিমত্তা হলো আধুনিক যুগের এক দারুণ উদ্ভাবন।";
+      }
+      if (q.includes('বাংলাদেশ') || q.includes('ঢাকা')) {
+        return "বাংলাদেশ নদীমাতৃক সুন্দর একটি দেশ। এর কৃষ্টি ও সংস্কৃতি অত্যন্ত সমৃদ্ধ।";
+      }
+
+      /* 4. Natural Human-like Conversational Fallback */
+      const dynamicResponses = [
+        `স্বাগতম! আপনি খুব চমৎকার একটি বিষয় নিয়ে কথা বলেছেন ("${escapeHTML(query)}")। এ বিষয়ে আরও কিছু জানতে চান?`,
+        `আপনার কথাটি আমি বুঝতে পেরেছি। একজন স্মার্ট এআই হিসেবে আমি আপনাকে যেকোনো তথ্য দিয়ে সাহায্য করতে পারি।`,
+        `খুব সুন্দর প্রশ্ন! আপনি চাইলে বিজ্ঞান, প্রযুক্তি কিংবা আমাদের ভাদুর মিয়া বাড়ির যেকোনো তথ্য সম্পর্কে আরও জানতে পারেন।`,
+        `আপনার সাথে কথা বলে ভালো লাগলো! বলুন, এই বিষয়ে আর কি কোনো সাহায্য লাগবে?`
+      ];
+
+      return dynamicResponses[Math.floor(Math.random() * dynamicResponses.length)];
     }
 
     function showRegisterForm() {
