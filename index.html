@@ -8,6 +8,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-main: #ffffff;
+      --bg-secondary: #f9f9f9;
+      --bg-card: #ffffff;
+      --bg-light: #edf2f7;
+      --text-main: #333333;
+      --text-muted: #555555;
+      --nav-bg: #143d59;
+      --accent-color: #f4b41a;
+      --border-color: #cbd5e0;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    body.dark-theme {
+      --bg-main: #121212;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #242424;
+      --bg-light: #2d2d2d;
+      --text-main: #e0e0e0;
+      --text-muted: #aaaaaa;
+      --nav-bg: #0f2b3e;
+      --accent-color: #f4b41a;
+      --border-color: #444444;
+      --shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -16,18 +42,19 @@
 
     body {
       font-family: 'Hind Siliguri', sans-serif;
-      color: #333;
+      color: var(--text-main);
       line-height: 1.6;
-      background-color: #ffffff;
+      background-color: var(--bg-main);
       width: 100%;
       overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     /* Auth Screen Box */
     .auth-page {
       width: 100%;
       min-height: 100vh;
-      background: #f4f6f9;
+      background: var(--bg-secondary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -35,21 +62,25 @@
     }
 
     .auth-box {
-      background: #ffffff;
+      background: var(--bg-card);
       width: 100%;
       max-width: 400px;
       padding: 35px 25px;
       border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
       text-align: center;
     }
 
     .auth-box h2 {
-      color: #143d59;
+      color: var(--nav-bg);
       margin-bottom: 25px;
       font-family: 'Poppins', sans-serif;
       font-size: 1.8rem;
+    }
+
+    body.dark-theme .auth-box h2 {
+      color: var(--accent-color);
     }
 
     .form-group {
@@ -62,28 +93,30 @@
       margin-bottom: 6px;
       font-weight: 600;
       font-size: 0.95rem;
-      color: #4a5568;
+      color: var(--text-muted);
     }
 
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 12px 14px;
-      border: 1px solid #cbd5e0;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       font-size: 0.95rem;
       outline: none;
       font-family: 'Hind Siliguri', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       transition: border-color 0.2s;
     }
 
     .form-group input:focus, .form-group textarea:focus {
-      border-color: #143d59;
+      border-color: var(--nav-bg);
     }
 
     .auth-btn {
       width: 100%;
       padding: 12px;
-      background-color: #143d59;
+      background-color: var(--nav-bg);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -109,7 +142,7 @@
 
     /* Main Website Content */
     #main-website-content {
-      background-color: #f9f9f9;
+      background-color: var(--bg-secondary);
       width: 100%;
     }
 
@@ -121,7 +154,7 @@
 
     /* Navbar */
     .navbar {
-      background-color: #143d59;
+      background-color: var(--nav-bg);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -138,23 +171,49 @@
       color: #fff;
       font-size: 1.3rem;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    .nav-links {
+    /* Tab Navigation Links */
+    .nav-tabs {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       list-style: none;
+      align-items: center;
     }
 
-    .nav-links a {
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
       color: #fff;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Hind Siliguri', sans-serif;
+      transition: all 0.2s;
     }
 
-    .nav-links a:hover {
-      color: #f4b41a;
+    .nav-tab-btn:hover, .nav-tab-btn.active {
+      background-color: var(--accent-color);
+      color: #143d59;
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle-btn:hover {
+      background: #fff;
+      color: #143d59;
     }
 
     .user-status-nav {
@@ -195,7 +254,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: 2.3rem;
       font-weight: 700;
-      color: #f4b41a;
+      color: var(--accent-color);
       text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
       margin-bottom: 10px;
     }
@@ -208,12 +267,16 @@
     .btn {
       display: inline-block;
       padding: 12px 28px;
-      background-color: #f4b41a;
+      background-color: var(--accent-color);
       color: #143d59;
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
       margin: 5px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Hind Siliguri', sans-serif;
       transition: background-color 0.2s;
     }
 
@@ -221,15 +284,13 @@
       background-color: #d99e12;
     }
 
-    .btn-outline {
-      background-color: transparent;
-      border: 2px solid #f4b41a;
-      color: #f4b41a;
+    /* Content Tab Switching */
+    .tab-content {
+      display: none;
     }
 
-    .btn-outline:hover {
-      background-color: #f4b41a;
-      color: #143d59;
+    .tab-content.active {
+      display: block;
     }
 
     /* Utilities */
@@ -238,14 +299,14 @@
     }
 
     .bg-light {
-      background-color: #edf2f7;
+      background-color: var(--bg-light);
     }
 
     .section-title {
       text-align: center;
       font-size: 1.8rem;
       margin-bottom: 25px;
-      color: #143d59;
+      color: var(--text-main);
     }
 
     .heritage-grid {
@@ -256,10 +317,11 @@
     }
 
     .heritage-card {
-      background: #fff;
+      background: var(--bg-card);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
     }
 
     .heritage-card img {
@@ -273,7 +335,7 @@
     }
 
     .heritage-content h3 {
-      color: #143d59;
+      color: var(--text-main);
       margin-bottom: 10px;
     }
 
@@ -283,8 +345,8 @@
 
     .category-title {
       font-size: 1.3rem;
-      color: #143d59;
-      border-bottom: 2px solid #f4b41a;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--accent-color);
       padding-bottom: 5px;
       margin-bottom: 15px;
       display: inline-block;
@@ -297,16 +359,17 @@
     }
 
     .vip-card {
-      background: #fff;
+      background: var(--bg-card);
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      border-left: 4px solid #143d59;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--nav-bg);
     }
 
     .vip-name {
       font-size: 1.15rem;
-      color: #143d59;
+      color: var(--text-main);
       font-weight: 700;
       margin-bottom: 4px;
     }
@@ -320,7 +383,7 @@
 
     .vip-history {
       font-size: 0.95rem;
-      color: #555;
+      color: var(--text-muted);
       line-height: 1.5;
     }
 
@@ -334,7 +397,7 @@
     }
 
     .member-badge {
-      background: #143d59;
+      background: var(--nav-bg);
       color: #fff;
       padding: 8px 18px;
       border-radius: 20px;
@@ -354,11 +417,12 @@
 
     .admin-panel {
       display: none;
-      background: #fff;
+      background: var(--bg-card);
       padding: 20px;
       border-radius: 10px;
       margin-top: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
       border-top: 5px solid #e53e3e;
       overflow-x: auto;
     }
@@ -370,22 +434,23 @@
     }
 
     .admin-table th, .admin-table td {
-      border: 1px solid #ddd;
+      border: 1px solid var(--border-color);
       padding: 10px;
       text-align: left;
     }
 
     .admin-table th {
-      background-color: #143d59;
+      background-color: var(--nav-bg);
       color: white;
     }
 
     /* Review & Rating Styles */
     .review-card {
-      background: #ffffff;
+      background: var(--bg-card);
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
       max-width: 600px;
       margin: 0 auto 35px auto;
     }
@@ -403,7 +468,7 @@
     }
 
     .stars-input label {
-      color: #cbd5e0;
+      color: var(--border-color);
       cursor: pointer;
       transition: color 0.2s;
     }
@@ -411,7 +476,7 @@
     .stars-input label:hover,
     .stars-input label:hover ~ label,
     .stars-input input:checked ~ label {
-      color: #f4b41a;
+      color: var(--accent-color);
     }
 
     .review-grid {
@@ -421,11 +486,14 @@
     }
 
     .review-item {
-      background: #ffffff;
+      background: var(--bg-card);
       padding: 18px;
       border-radius: 8px;
-      border-left: 4px solid #f4b41a;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent-color);
+      box-shadow: var(--shadow);
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .review-item-header {
@@ -437,27 +505,30 @@
 
     .review-item-name {
       font-weight: 700;
-      color: #143d59;
+      color: var(--text-main);
     }
 
     .review-item-stars {
-      color: #f4b41a;
+      color: var(--accent-color);
       font-size: 16px;
     }
 
     .review-item-comment {
-      color: #4a5568;
+      color: var(--text-muted);
       font-size: 0.95rem;
     }
 
     .single-event-box {
       max-width: 600px;
       margin: 0 auto;
-      background: #fff;
-      border-top: 6px solid #f4b41a;
+      background: var(--bg-card);
+      border-top: 6px solid var(--accent-color);
       padding: 35px 25px;
       border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow);
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
       text-align: center;
     }
 
@@ -474,7 +545,7 @@
 
     .group-section {
       text-align: center;
-      background-color: #ffffff;
+      background-color: var(--bg-card);
     }
 
     .group-btn-link {
@@ -499,8 +570,134 @@
       margin-bottom: 15px;
     }
 
+    /* AI Assistant Floating Widget */
+    .ai-widget-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--nav-bg);
+      color: var(--accent-color);
+      border: 2px solid var(--accent-color);
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+
+    .ai-widget-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .ai-chat-box {
+      position: fixed;
+      bottom: 95px;
+      right: 25px;
+      width: 350px;
+      max-width: 90vw;
+      height: 480px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .ai-chat-header {
+      background: var(--nav-bg);
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ai-chat-header h4 {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-close-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .ai-chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .ai-msg {
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 85%;
+      line-height: 1.4;
+    }
+
+    .ai-msg.bot {
+      background: var(--bg-light);
+      color: var(--text-main);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .ai-msg.user {
+      background: var(--nav-bg);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .ai-chat-input-area {
+      padding: 12px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      gap: 8px;
+      background: var(--bg-main);
+    }
+
+    .ai-chat-input-area input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      outline: none;
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .ai-send-btn {
+      background: var(--nav-bg);
+      color: var(--accent-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     footer {
-      background-color: #143d59;
+      background-color: var(--nav-bg);
       color: #fff;
       text-align: center;
       padding: 20px 0;
@@ -558,15 +755,16 @@
 
   <!-- Main Website Content -->
   <div id="main-website-content" style="display: none;">
+    
+    <!-- Navbar with Tabs & Dark Mode Toggle -->
     <nav class="navbar">
       <div class="container nav-container">
-        <div class="logo">ভাদুর মিয়া বাড়ি</div>
+        <div class="logo" onclick="switchTab('home-tab')">ভাদুর মিয়া বাড়ি</div>
         
-        <ul class="nav-links">
-          <li><a href="#heritage-section">ঐতিহ্য</a></li>
-          <li><a href="#books-section">বই ও প্রকাশনা</a></li>
-          <li><a href="#vip-section">গুরুজন ও গুণীজন</a></li>
-          <li><a href="#events-section">ইভেন্ট</a></li>
+        <ul class="nav-tabs">
+          <li><button id="btn-home-tab" class="nav-tab-btn active" onclick="switchTab('home-tab')">🏠 হোম</button></li>
+          <li><button id="btn-elders-tab" class="nav-tab-btn" onclick="switchTab('elders-tab')">📚 গুরুজন ও বই</button></li>
+          <li><button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button></li>
         </ul>
 
         <div class="user-status-nav">
@@ -576,253 +774,274 @@
       </div>
     </nav>
 
-    <header class="hero">
-      <div class="container">
-        <h1 class="welcome-title">WELCOME TO BHADUR MIA BARI</h1>
-        <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০ | ঐতিহ্য ও ইতিহাসের প্রতীক</p>
-        <a href="#books-section" class="btn">📚 প্রকাশনা দেখুন</a>
-        <a href="#vip-section" class="btn btn-outline">👑 গুরুজনদের তালিকা</a>
-      </div>
-    </header>
-
-    <!-- Section 1: Heritage Places Only -->
-    <section id="heritage-section" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">ঐতিহাসিক স্থাপনা ও পরিচিতি</h2>
-        <div class="heritage-grid">
-          <div class="heritage-card">
-            <img src="https://via.placeholder.com/600x400?text=Mia+Bari+Jame+Mosque" alt="মসজিদ">
-            <div class="heritage-content">
-              <h3>মিয়া বাড়ি জামে মসজিদ</h3>
-              <p>উনবিংশ শতাব্দীর শুরুতে (মোগল আমলের শেষভাগে) প্রতিষ্ঠিত। ২০০২ সালের ডিসেম্বরে মার্বেল পাথর দিয়ে পুনর্নির্মিত হয়।</p>
-            </div>
-          </div>
-          <div class="heritage-card">
-            <img src="https://via.placeholder.com/600x400?text=Ershad+Manzil" alt="এরশাদ মঞ্জিল">
-            <div class="heritage-content">
-              <h3>ঐতিহ্যবাহী "এরশাদ মঞ্জিল"</h3>
-              <p>১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তৎকালীন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি।</p>
-            </div>
-          </div>
+    <!-- TAB 1: HOME PAGE -->
+    <div id="home-tab" class="tab-content active">
+      <header class="hero">
+        <div class="container">
+          <h1 class="welcome-title">WELCOME TO BHADUR MIA BARI</h1>
+          <p class="subtitle">এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০ | ঐতিহ্য ও ইতিহাসের প্রতীক</p>
+          <button onclick="switchTab('elders-tab')" class="btn">📖 গুরুজন ও বইয়ের তথ্য দেখুন</button>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <!-- Section 2: NEW Lesson - Books & Publications -->
-    <section id="books-section" class="section">
-      <div class="container">
-        <h2 class="section-title">📖 আমাদের বই ও প্রকাশনা (Lesson)</h2>
-        <div class="heritage-grid" style="grid-template-columns: 1fr;">
-          <div class="heritage-card" style="display: flex; flex-wrap: wrap; align-items: center;">
-            <img src="https://via.placeholder.com/600x400?text=Alokito+Mia+Bari+Book" alt="বই মোড়ক" style="max-width: 400px; width: 100%;">
-            <div class="heritage-content" style="flex: 1; padding: 30px;">
-              <span class="event-badge-tag" style="background: #143d59;">বিশেষ প্রকাশনা</span>
-              <h3 style="font-size: 1.6rem;">"আলোকিত মিয়া বাড়ি" মোড়ক উন্মোচন</h3>
-              <p style="font-size: 1.05rem; margin-top: 10px;">
-                ১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে <strong>"আলোকিত মিয়া বাড়ি"</strong> বইটির শুভ মোড়ক উন্মোচন করা হয়। এই বইটিতে ভাদুর মিয়া বাড়ির গৌরবোজ্জ্বল ইতিহাস ও ঐতিহ্য লিপিবদ্ধ রয়েছে।
-              </p>
+      <!-- Section: Heritage Places Only -->
+      <section class="section bg-light">
+        <div class="container">
+          <h2 class="section-title">ঐতিহাসিক স্থাপনা ও পরিচিতি</h2>
+          <div class="heritage-grid">
+            <div class="heritage-card">
+              <img src="https://via.placeholder.com/600x400?text=Mia+Bari+Jame+Mosque" alt="মসজিদ">
+              <div class="heritage-content">
+                <h3>মিয়া বাড়ি জামে মসজিদ</h3>
+                <p>উনবিংশ শতাব্দীর শুরুতে (মোগল আমলের শেষভাগে) প্রতিষ্ঠিত। ২০০২ সালের ডিসেম্বরে মার্বেল পাথর দিয়ে পুনর্নির্মিত হয়।</p>
+              </div>
+            </div>
+            <div class="heritage-card">
+              <img src="https://via.placeholder.com/600x400?text=Ershad+Manzil" alt="এরশাদ মঞ্জিল">
+              <div class="heritage-content">
+                <h3>ঐতিহ্যবাহী "এরশাদ মঞ্জিল"</h3>
+                <p>১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তৎকালীন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি।</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Section 3: NEW Lesson - Elders & VIPs -->
-    <section id="vip-section" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">👑 বাড়ির গুরুজন ও গুণীজন (Lesson)</h2>
-        
-        <div class="vip-category">
-          <h3 class="category-title">বংশের প্রতিষ্ঠাতা ও আদি পুরুষ</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">মরহুম দৌলত গাজী খান</div>
-              <div class="vip-title-tag">মিয়া বংশ ও ভাদুর মিয়া বাড়ির প্রতিষ্ঠাতা</div>
-              <p class="vip-history">পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ। ১৮৫৭ সালে সিপাহী বিদ্রোহের পর সম্রাট বাহাদুর শাহের সাথে রামগঞ্জে আগমন ও বসতি স্থাপন করেন।</p>
+      <!-- Review & Rating Section -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">রিভিউ ও রেটিং দিন</h2>
+          
+          <div class="review-card">
+            <form id="reviewForm" onsubmit="addReview(event)">
+              <div class="stars-input">
+                <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+              </div>
+              <div class="form-group">
+                <textarea id="userComment" rows="3" placeholder="আপনার অনুভূতি বা অভিজ্ঞতা সংক্ষেপে লিখুন..." required></textarea>
+              </div>
+              <button type="submit" class="auth-btn">রিভিউ জমা দিন</button>
+            </form>
+          </div>
+
+          <h3 style="color: var(--text-main); text-align: center; margin-bottom: 20px;">সকল সদস্যের রিভিউসমূহ</h3>
+          <div id="reviewsDisplay" class="review-grid"></div>
+        </div>
+      </section>
+
+      <section id="members-section" class="section bg-light">
+        <div class="container">
+          <h2 class="section-title">রেজিস্ট্রার্ড সদস্যবৃন্দ</h2>
+          <div id="member-list" class="member-grid"></div>
+
+          <div id="admin-panel" class="admin-panel">
+            <h3 style="color: #e53e3e; text-align: center;">🔒 অ্যাডমিন প্যানেল: ইউজার তথ্য</h3>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ইউজার নাম</th>
+                  <th>জন্ম তারিখ</th>
+                  <th>ধর্ম</th>
+                  <th>পরিবার</th>
+                  <th>সর্বশেষ লগইন</th>
+                </tr>
+              </thead>
+              <tbody id="login-logs-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="events-section" class="section">
+        <div class="container">
+          <h2 class="section-title">সাম্প্রতিক ইভেন্ট</h2>
+          <div class="single-event-box">
+            <span class="event-badge-tag">RECENT EVENT</span>
+            <h3 class="event-main-title">🎉 GET TOGETHER</h3>
+            <p>ভাদুর মিয়া বাড়ির সকল সদস্য ও গুণীজনদের নিয়ে বিশেষ গেট-টুগেদার অনুষ্ঠান।</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section group-section bg-light">
+        <div class="container">
+          <h2 class="section-title">আমাদের ফেসবুক গ্রুপ</h2>
+          <p style="margin-bottom: 20px;">আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
+          <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" rel="noopener noreferrer" class="group-btn-link">👥 ফেসবুক গ্রুপে জয়েন করুন</a>
+        </div>
+      </section>
+
+      <section class="section" style="text-align: center;">
+        <div class="container">
+          <h2 class="section-title">আমাদের অবস্থান ও গুগল ম্যাপ</h2>
+          <p style="margin-bottom: 15px;">📍 <strong>ঠিকানা:</strong> Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০।</p>
+          <div class="map-box">
+            <iframe 
+              src="https://maps.google.com/maps?q=Bhadur+Mia+Bari,Ershad+Hossain+Rd,Ramganj+3720&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="350" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- TAB 2: ELDERS & BOOKS PAGE -->
+    <div id="elders-tab" class="tab-content">
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">📖 আমাদের বই ও প্রকাশনা</h2>
+          <div class="heritage-grid" style="grid-template-columns: 1fr;">
+            <div class="heritage-card" style="display: flex; flex-wrap: wrap; align-items: center;">
+              <img src="https://via.placeholder.com/600x400?text=Alokito+Mia+Bari+Book" alt="বই মোড়ক" style="max-width: 400px; width: 100%;">
+              <div class="heritage-content" style="flex: 1; padding: 30px;">
+                <span class="event-badge-tag" style="background: var(--nav-bg);">বিশেষ প্রকাশনা</span>
+                <h3 style="font-size: 1.6rem;">"আলোকিত মিয়া বাড়ি" মোড়ক উন্মোচন</h3>
+                <p style="font-size: 1.05rem; margin-top: 10px;">
+                  ১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে <strong>"আলোকিত মিয়া বাড়ি"</strong> বইটির শুভ মোড়ক উন্মোচন করা হয়। এই বইটিতে ভাদুর মিয়া বাড়ির গৌরবোজ্জ্বল ইতিহাস ও ঐতিহ্য লিপিবদ্ধ রয়েছে।
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="vip-category">
-          <h3 class="category-title">সামরিক, প্রশাসন ও সফল শিল্পপতি</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">মরহুম দেলোয়ার হোসেন (PSP)</div>
-              <div class="vip-title-tag">লর্ড মাউন্টব্যাটেনের ADC, জিন্নাহর স্টাফ অফিসার ও শিল্পপতি</div>
-              <p class="vip-history">১৯১৪–২০১৪। ব্রিটিশ রয়্যাল নেভি অফিসার, PSP কর্মকর্তা ও হোসেন ব্রাদার্স এবং সিনেমা হলের প্রতিষ্ঠাতা।</p>
+      <section class="section bg-light">
+        <div class="container">
+          <h2 class="section-title">👑 বাড়ির গুরুজন ও গুণীজন</h2>
+          
+          <div class="vip-category">
+            <h3 class="category-title">বংশের প্রতিষ্ঠাতা ও আদি পুরুষ</h3>
+            <div class="vip-grid">
+              <div class="vip-card">
+                <div class="vip-name">মরহুম দৌলত গাজী খান</div>
+                <div class="vip-title-tag">মিয়া বংশ ও ভাদুর মিয়া বাড়ির প্রতিষ্ঠাতা</div>
+                <p class="vip-history">পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ। ১৮৫৭ সালে সিপাহী বিদ্রোহের পর সম্রাট বাহাদুর শাহের সাথে রামগঞ্জে আগমন ও বসতি স্থাপন করেন।</p>
+              </div>
             </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব শহিদুল্লাহ</div>
-              <div class="vip-title-tag">সাবেক বাণিজ্য সচিব</div>
-              <p class="vip-history">গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সাবেক বাণিজ্য সচিব।</p>
+          </div>
+
+          <div class="vip-category">
+            <h3 class="category-title">সামরিক, প্রশাসন ও সফল শিল্পপতি</h3>
+            <div class="vip-grid">
+              <div class="vip-card">
+                <div class="vip-name">মরহুম দেলোয়ার হোসেন (PSP)</div>
+                <div class="vip-title-tag">লর্ড মাউন্টব্যাটেনের ADC, জিন্নাহর স্টাফ অফিসার ও শিল্পপতি</div>
+                <p class="vip-history">১৯১৪–২০১৪। ব্রিটিশ রয়্যাল নেভি অফিসার, PSP কর্মকর্তা ও হোসেন ব্রাদার্স এবং সিনেমা হলের প্রতিষ্ঠাতা।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">জনাব শহিদুল্লাহ</div>
+                <div class="vip-title-tag">সাবেক বাণিজ্য সচিব</div>
+                <p class="vip-history">গণপ্রজাতন্ত্রী বাংলাদেশ সরকারের সাবেক বাণিজ্য সচিব।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">শামসুদ্দিন আহমেদ</div>
+                <div class="vip-title-tag">কন্ট্রোল অফ ইনস্যুরেন্স</div>
+                <p class="vip-history">বাংলাদেশের ইনস্যুরেন্স নিয়ন্ত্রক (কন্ট্রোলার অব ইনস্যুরেন্স) ছিলেন।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">রাজিবুল ইসলাম</div>
+                <div class="vip-title-tag">কমান্ডর, বাংলাদেশ নৌবাহিনী</div>
+                <p class="vip-history">বর্তমানে বাংলাদেশ নৌবাহিনীতে 'কমান্ডর' পদে কর্মরত আছেন।</p>
+              </div>
             </div>
-            <div class="vip-card">
-              <div class="vip-name">শামসুদ্দিন আহমেদ</div>
-              <div class="vip-title-tag">কন্ট্রোল অফ ইনস্যুরেন্স</div>
-              <p class="vip-history">বাংলাদেশের ইনস্যুরেন্স নিয়ন্ত্রক (কন্ট্রোলার অব ইনস্যুরেন্স) ছিলেন।</p>
+          </div>
+
+          <div class="vip-category">
+            <h3 class="category-title">জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
+            <div class="vip-grid">
+              <div class="vip-card">
+                <div class="vip-name">মরহুম আলহাজ্ব এরশাদ হোসেন মিয়া</div>
+                <div class="vip-title-tag">৩৪ বছরের ইউপি চেয়ারম্যান ও সোনাপুর বাজারের প্রতিষ্ঠাতা</div>
+                <p class="vip-history">১৮৯৮-১৯৫২। টানা ৩৪ বছর চেয়ারম্যান ছিলেন। ঐতিহাসিক ১৫ কিমি 'এরশাদ হোসেন রোড' তাঁর নামানুসারে গঠিত।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">মরহুম শাহাদাত হোসেন (বাচ্চু মিয়া)</div>
+                <div class="vip-title-tag">৩৫ বছরের চেয়ারম্যান & রামগঞ্জ থানা পরিষদ প্রধান</div>
+                <p class="vip-history">১৯০০-১৯৯০। টানা ৩৫ বছর চেয়ারম্যান ও রামগঞ্জ থানা পরিষদের চেয়ারম্যান ছিলেন।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">জনাব নাজিম উদ্দিন আহমেদ</div>
+                <div class="vip-title-tag">সাবেক এমপি ও বিশিষ্ট শিল্পপতি</div>
+                <p class="vip-history">দুইবারের নির্বাচিত সংসদ সদস্য (MP)।</p>
+              </div>
             </div>
-            <div class="vip-card">
-              <div class="vip-name">রাজিবুল ইসলাম</div>
-              <div class="vip-title-tag">কমান্ডর, বাংলাদেশ নৌবাহিনী</div>
-              <p class="vip-history">বর্তমানে বাংলাদেশ নৌবাহিনীতে 'কমান্ডর' পদে কর্মরত আছেন।</p>
+          </div>
+
+          <div class="vip-category">
+            <h3 class="category-title">শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
+            <div class="vip-grid">
+              <div class="vip-card">
+                <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসাইন</div>
+                <div class="vip-title-tag">চৌমুহনী সরকারি কলেজের প্রতিষ্ঠাতা অধ্যক্ষ</div>
+                <p class="vip-history">টানা ৩১ বছর চৌমুহনী কলেজের অধ্যক্ষ হিসেবে নেতৃত্ব দেন।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">জনাব আনোয়ার হোসেন</div>
+                <div class="vip-title-tag">শিক্ষক ও সমাজসেবক</div>
+                <p class="vip-history">ভাদুর উচ্চ বিদ্যালয়ের শিক্ষক ও প্রখ্যাত সমাজসেবক।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">ডাক্তার আমিন উল্লাহ</div>
+                <div class="vip-title-tag">প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা</div>
+                <p class="vip-history">ভাদুর সরকারি প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">জনাব জুবায়ের হোসেন</div>
+                <div class="vip-title-tag">কম্পিউটার চিপ উদ্ভাবক (ইউএসএ)</div>
+                <p class="vip-history">যুক্তরাষ্ট্রে কম্পিউটার চিপ উদ্ভাবনের সাথে যুক্ত ছিলেন।</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vip-category">
+            <h3 class="category-title">ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
+            <div class="vip-grid">
+              <div class="vip-card">
+                <div class="vip-name">মরহুম আহম্মদ উল্লাহ দরবেশ সাহেব</div>
+                <div class="vip-title-tag">আধ্যাত্মিক সাধক ও শিক্ষানুরাগী</div>
+                <p class="vip-history">প্রখ্যাত আলেম ও বুজুর্গ।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">মরহুম মাওলানা আনোয়ার উল্যা সাহেব</div>
+                <div class="vip-title-tag">প্রখ্যাত ওয়ায়েজ & জেলা সভাপতি, ওলামায়ে হিন্দ</div>
+                <p class="vip-history">ভারত, পাকিস্তান ও আফগানিস্তানে ওয়াজ-নসিহত করতেন।</p>
+              </div>
+              <div class="vip-card">
+                <div class="vip-name">হাফেজ আলতাফ হোসেন</div>
+                <div class="vip-title-tag">কোরআনে হাফেজ</div>
+                <p class="vip-history">একজন কোরআনে হাফেজ ও সম্মানিত ব্যক্তিত্ব।</p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+    </div>
 
-        <div class="vip-category">
-          <h3 class="category-title">জনপ্রতিনিধি ও সামাজিক নেতৃত্ব</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">মরহুম আলহাজ্ব এরশাদ হোসেন মিয়া</div>
-              <div class="vip-title-tag">৩৪ বছরের ইউপি চেয়ারম্যান ও সোনাপুর বাজারের প্রতিষ্ঠাতা</div>
-              <p class="vip-history">১৮৯৮-১৯৫২। টানা ৩৪ বছর চেয়ারম্যান ছিলেন। ঐতিহাসিক ১৫ কিমি 'এরশাদ হোসেন রোড' তাঁর নামানুসারে গঠিত।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">মরহুম শাহাদাত হোসেন (বাচ্চু মিয়া)</div>
-              <div class="vip-title-tag">৩৫ বছরের চেয়ারম্যান & রামগঞ্জ থানা পরিষদ প্রধান</div>
-              <p class="vip-history">১৯০০-১৯৯০। টানা ৩৫ বছর চেয়ারম্যান ও রামগঞ্জ থানা পরিষদের চেয়ারম্যান ছিলেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব নাজিম উদ্দিন আহমেদ</div>
-              <div class="vip-title-tag">সাবেক এমপি ও বিশিষ্ট শিল্পপতি</div>
-              <p class="vip-history">দুইবারের নির্বাচিত সংসদ সদস্য (MP)।</p>
-            </div>
-          </div>
-        </div>
+    <!-- AI Assistant Disk (Floating UI) -->
+    <button class="ai-widget-btn" onclick="toggleAIChat()">🤖</button>
 
-        <div class="vip-category">
-          <h3 class="category-title">শিক্ষা, প্রযুক্তি ও সমাজসেবা</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">অধ্যক্ষ তাফাজ্জল হোসাইন</div>
-              <div class="vip-title-tag">চৌমুহনী সরকারি কলেজের প্রতিষ্ঠাতা অধ্যক্ষ</div>
-              <p class="vip-history">টানা ৩১ বছর চৌমুহনী কলেজের অধ্যক্ষ হিসেবে নেতৃত্ব দেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব আনোয়ার হোসেন</div>
-              <div class="vip-title-tag">শিক্ষক ও সমাজসেবক</div>
-              <p class="vip-history">ভাদুর উচ্চ বিদ্যালয়ের শিক্ষক ও প্রখ্যাত সমাজসেবক।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">ডাক্তার আমিন উল্লাহ</div>
-              <div class="vip-title-tag">প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা</div>
-              <p class="vip-history">ভাদুর সরকারি প্রাথমিক বিদ্যালয়ের প্রতিষ্ঠাতা।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">জনাব জুবায়ের হোসেন</div>
-              <div class="vip-title-tag">কম্পিউটার চিপ উদ্ভাবক (ইউএসএ)</div>
-              <p class="vip-history">যুক্তরাষ্ট্রে কম্পিউটার চিপ উদ্ভাবনের সাথে যুক্ত ছিলেন।</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="vip-category">
-          <h3 class="category-title">ধর্মীয় ও আধ্যাত্মিক ব্যক্তিত্ব</h3>
-          <div class="vip-grid">
-            <div class="vip-card">
-              <div class="vip-name">মরহুম আহম্মদ উল্লাহ দরবেশ সাহেব</div>
-              <div class="vip-title-tag">আধ্যাত্মিক সাধক ও শিক্ষানুরাগী</div>
-              <p class="vip-history">প্রখ্যাত আলেম ও বুজুর্গ।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">মরহুম মাওলানা আনোয়ার উল্যা সাহেব</div>
-              <div class="vip-title-tag">প্রখ্যাত ওয়ায়েজ & জেলা সভাপতি, ওলামায়ে হিন্দ</div>
-              <p class="vip-history">ভারত, পাকিস্তান ও আফগানিস্তানে ওয়াজ-নসিহত করতেন।</p>
-            </div>
-            <div class="vip-card">
-              <div class="vip-name">হাফেজ আলতাফ হোসেন</div>
-              <div class="vip-title-tag">কোরআনে হাফেজ</div>
-              <p class="vip-history">একজন কোরআনে হাফেজ ও সম্মানিত ব্যক্তিত্ব।</p>
-            </div>
-          </div>
-        </div>
+    <div class="ai-chat-box" id="aiChatBox">
+      <div class="ai-chat-header">
+        <h4>🤖 Bari Assistant AI</h4>
+        <button class="ai-close-btn" onclick="toggleAIChat()">✖</button>
       </div>
-    </section>
-
-    <!-- Review & Rating Section -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">রিভিউ ও রেটিং দিন</h2>
-        
-        <div class="review-card">
-          <form id="reviewForm" onsubmit="addReview(event)">
-            <div class="stars-input">
-              <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
-              <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-              <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-              <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-              <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
-            </div>
-            <div class="form-group">
-              <textarea id="userComment" rows="3" placeholder="আপনার অনুভূতি বা অভিজ্ঞতা সংক্ষেপে লিখুন..." required></textarea>
-            </div>
-            <button type="submit" class="auth-btn">রিভিউ জমা দিন</button>
-          </form>
+        <div class="ai-chat-messages" id="aiMessages">
+          <div class="ai-msg bot">আসসালামু আলাইকুম! আমি 'ভাদুর মিয়া বাড়ি' প্রফেশনাল এআই অ্যাসিস্ট্যান্ট। আমাদের ইতিহাস, জামে মসজিদ, এরশাদ মঞ্জিল বা গুরুজনদের সম্পর্কে যেকোনো প্রশ্ন করতে পারেন।</div>
         </div>
-
-        <h3 style="color: #143d59; text-align: center; margin-bottom: 20px;">সকল সদস্যের রিভিউসমূহ</h3>
-        <div id="reviewsDisplay" class="review-grid"></div>
+      <div class="ai-chat-input-area">
+        <input type="text" id="aiUserInput" placeholder="এখানে প্রশ্ন লিখুন..." onkeypress="handleAIPress(event)">
+        <button class="ai-send-btn" onclick="sendAIMessage()">পাঠান</button>
       </div>
-    </section>
-
-    <section id="members-section" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">রেজিস্ট্রার্ড সদস্যবৃন্দ</h2>
-        <div id="member-list" class="member-grid"></div>
-
-        <div id="admin-panel" class="admin-panel">
-          <h3 style="color: #e53e3e; text-align: center;">🔒 অ্যাডমিন প্যানেল: ইউজার তথ্য</h3>
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>ইউজার নাম</th>
-                <th>জন্ম তারিখ</th>
-                <th>ধর্ম</th>
-                <th>পরিবার</th>
-                <th>সর্বশেষ লগইন</th>
-              </tr>
-            </thead>
-            <tbody id="login-logs-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="events-section" class="section">
-      <div class="container">
-        <h2 class="section-title">সাম্প্রতিক ইভেন্ট</h2>
-        <div class="single-event-box">
-          <span class="event-badge-tag">RECENT EVENT</span>
-          <h3 class="event-main-title">🎉 GET TOGETHER</h3>
-          <p>ভাদুর মিয়া বাড়ির সকল সদস্য ও গুণীজনদের নিয়ে বিশেষ গেট-টুগেদার অনুষ্ঠান।</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section group-section bg-light">
-      <div class="container">
-        <h2 class="section-title">আমাদের ফেসবুক গ্রুপ</h2>
-        <p style="margin-bottom: 20px;">আমাদের অফিশিয়াল ফেসবুক গ্রুপে জয়েন করুন:</p>
-        <a href="https://www.facebook.com/share/g/197qJGTB8G/" target="_blank" rel="noopener noreferrer" class="group-btn-link">👥 ফেসবুক গ্রুপে জয়েন করুন</a>
-      </div>
-    </section>
-
-    <section class="section" style="text-align: center;">
-      <div class="container">
-        <h2 class="section-title">আমাদের অবস্থান ও গুগল ম্যাপ</h2>
-        <p style="margin-bottom: 15px;">📍 <strong>ঠিকানা:</strong> Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০।</p>
-        <div class="map-box">
-          <iframe 
-            src="https://maps.google.com/maps?q=Bhadur+Mia+Bari,Ershad+Hossain+Rd,Ramganj+3720&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="350" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <footer>
       <div class="container">
@@ -842,6 +1061,101 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+    }
+
+    /* Dark Mode Toggle */
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      document.getElementById('themeBtn').innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+      localStorage.setItem('site_theme', isDark ? 'dark' : 'light');
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('site_theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      setTimeout(() => {
+        const themeBtn = document.getElementById('themeBtn');
+        if(themeBtn) themeBtn.innerText = '☀️ Light Mode';
+      }, 100);
+    }
+
+    /* Tab Switcher Function */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+      
+      if(tabId === 'home-tab') {
+        document.getElementById('btn-home-tab').classList.add('active');
+      } else if(tabId === 'elders-tab') {
+        document.getElementById('btn-elders-tab').classList.add('active');
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    /* AI Assistant Logic */
+    function toggleAIChat() {
+      const box = document.getElementById('aiChatBox');
+      box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleAIPress(e) {
+      if (e.key === 'Enter') sendAIMessage();
+    }
+
+    function sendAIMessage() {
+      const input = document.getElementById('aiUserInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const msgsDiv = document.getElementById('aiMessages');
+      
+      // Add User Message
+      msgsDiv.innerHTML += `<div class="ai-msg user">${escapeHTML(text)}</div>`;
+      input.value = '';
+      msgsDiv.scrollTop = msgsDiv.scrollHeight;
+
+      // AI Knowledge Base Response
+      setTimeout(() => {
+        let reply = getAIResponse(text);
+        msgsDiv.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
+        msgsDiv.scrollTop = msgsDiv.scrollHeight;
+      }, 500);
+    }
+
+    function getAIResponse(query) {
+      const q = query.toLowerCase();
+
+      if (q.includes('ইতিহাস') || q.includes('প্রতিষ্ঠা') || q.includes('দৌলত গাজী')) {
+        return "ভাদুর মিয়া বাড়ি ও মিয়া বংশের প্রতিষ্ঠাতা মরহুম দৌলত গাজী খান। তিনি পারস্য বংশোদ্ভূত ও মোগল রাজদরবারের সভাসদ ছিলেন। ১৮৫৭ সালে সিপাহী বিদ্রোহের পর সম্রাট বাহাদুর শাহের সাথে তিনি রামগঞ্জে আগমন ও বসতি স্থাপন করেন।";
+      }
+      if (q.includes('মসজিদ')) {
+        return "মিয়া বাড়ি জামে মসজিদটি উনবিংশ শতাব্দীর শুরুতে প্রতিষ্ঠিত হয়। ২০০২ সালের ডিসেম্বরে মার্বেল পাথর দিয়ে এটি পুনর্নির্মিত হয়।";
+      }
+      if (q.includes('এরশাদ মঞ্জিল') || q.includes('দালান') || q.includes('বিল্ডিং')) {
+        return "ঐতিহ্যবাহী 'এরশাদ মঞ্জিল' ১৮৯৫ থেকে ১৯০৫ সালের মধ্যে নির্মিত তদানীন্তন নোয়াখালী অঞ্চলের বিরল ৩টি ইটের দালানের একটি।";
+      }
+      if (q.includes('বই') || q.includes('প্রকাশনা') || q.includes('আলোকিত মিয়া বাড়ি')) {
+        return "১৮ ফেব্রুয়ারি ২০২৩ তারিখে মরহুম দেলোয়ার হোসেন (পিএসপি)-এর কনিষ্ঠ পুত্র জাহিদ হোসেন প্রিতমের হাত ধরে 'আলোকিত মিয়া বাড়ি' বইটির শুভ মোড়ক উন্মোচন করা হয়।";
+      }
+      if (q.includes('ঠিকানা') || q.includes('কোথায়') || q.includes('লোকেশন') || q.includes('ম্যাপ')) {
+        return "আমাদের ঠিকানা: Bhadur Mia Bari, এরশাদ হোসেন রোড, রামগঞ্জ ৩৭২০, লক্ষ্মীপুর। ওয়েবসাইটের ম্যাপ অংশে এর গুগল লোকেশন দেয়া আছে।";
+      }
+      if (q.includes('ফেসবুক') || q.includes('গ্রুপ')) {
+        return "আমাদের একটি অফিশিয়াল ফেসবুক গ্রুপ রয়েছে! ওয়েবসাইটের হোম পেজে 'ফেসবুক গ্রুপে জয়েন করুন' বাটনে ক্লিক করে যুক্ত হতে পারেন।";
+      }
+      if (q.includes('কেমন') || q.includes('হাই') || q.includes('হ্যালো') || q.includes('hello') || q.includes('hi')) {
+        return "হ্যালো! আমি আপনাকে ভাদুর মিয়া বাড়ি সম্পর্কে কী তথ্য দিয়ে সাহায্য করতে পারি?";
+      }
+
+      return "ধন্যবাদ আপনার প্রশ্নের জন্য। আমি ভাদুর মিয়া বাড়ির ইতিহাস, মসজিদ, এরশাদ মঞ্জিল, প্রতিষ্ঠাতা, বা বই সম্পর্কিত প্রশ্নের উত্তর দিতে পারি। অনুগ্রহ করে নির্দিষ্ট বিষয়ে জিজ্ঞেস করুন।";
     }
 
     function showRegisterForm() {
@@ -937,7 +1251,7 @@
       const userNames = Object.keys(users);
 
       if (userNames.length === 0) {
-        memberListDiv.innerHTML = '<p style="color: #777;">কোনো সদস্য নেই।</p>';
+        memberListDiv.innerHTML = '<p style="color: var(--text-muted);">কোনো সদস্য নেই।</p>';
         return;
       }
 
@@ -1011,7 +1325,7 @@
       if (!display) return;
       
       if (reviews.length === 0) {
-        display.innerHTML = '<p style="text-align:center; color:#777; grid-column: 1/-1;">এখনো কোনো রিভিউ দেওয়া হয়নি। প্রথম রিভিউটি আপনি দিন!</p>';
+        display.innerHTML = '<p style="text-align:center; color: var(--text-muted); grid-column: 1/-1;">এখনো কোনো রিভিউ দেওয়া হয়নি। প্রথম রিভিউটি আপনি দিন!</p>';
         return;
       }
 
